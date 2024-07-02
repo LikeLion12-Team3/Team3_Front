@@ -1,6 +1,7 @@
 
 /* components */
 @import "/css/components/sidebar.css";
+@import "./components/sidebar.css";
 
 
 /* screen */
