@@ -18,6 +18,7 @@ body{
     color: white;
 }
 
+<<<<<<< HEAD
 /* 캘린더 */
 .calendar {
     background: #2B2B2B;
@@ -426,3 +427,10 @@ td:hover {
 .main_template_tab3:hover::before {
     opacity: 1;
 }
+=======
+#content_subtitle{
+    font-size: 28px;
+    color: #11E5B3;
+    font-weight: bold;
+}
+>>>>>>> 87b59c52beb8826c4de6dffe4b56197b3d1862c8

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <script src="./static/main.js"></script>
     <script src="./static/diary_template.js"></script>
-    <script src="./static/writediary.js"></script>
+    <script src="./static/write_diary.js"></script>
     <title>별다줄</title>
 </head>
 <body>
@@ -21,6 +21,7 @@
         <li><a href="./diary_template.html" onclick="changeImage(event, this)"><img src="./img/Icon/click_diary_icon.png" alt="Diary"></a></li>
         <li><a href="./diary_check.html" onclick="changeImage(event, this)"><img src="./img/Icon/book_icon.png" alt="Book"></a></li>
         <li><a href="./idea.html" onclick="changeImage(event, this)"><img src="./img/Icon/idea_icon.png" alt="Idea"></a></li>
+        <li class="bottom_nav_icon"><a href="./profile.html" onclick="toggleProfile(event, this)"><img src="./img/Icon/profile_icon.png" alt="Idea"></a></li>
     </ul>
 </nav>
 
@@ -45,7 +46,7 @@
                 <textarea id="diary_content4" placeholder="내용을 입력하세요."></textarea>
                 <span id="hashtag">해시태그<span style="color:red;">*</span></span>
                 <textarea id="hashtag_content" placeholder="내용을 입력하세요."></textarea>
-                <div class="diary_btn_container"><button class="diary_btn" id="cancle_btn">취소</button><button class="diary_btn" id="save_btn">저장</button></div>
+                <div class="diary_btn_container"><button class="diary_btn" id="diary_cancel_btn">취소</button><button class="diary_btn" id="diary_save_btn">저장</button></div>
             </div>
         </div>
     </div>
