@@ -1,4 +1,5 @@
 @import "/css/components/sidebar.css";
+@import "./components/sidebar.css";
 
 @import "screens/login.css";
 @import "screens/main.css";

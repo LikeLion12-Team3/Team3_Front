@@ -1,3 +1,9 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body{
     background-color: #181818;
 }
@@ -10,4 +16,413 @@ body{
     padding: 20px;
     flex: 1;
     color: white;
+}
+
+/* 캘린더 */
+.calendar {
+    background: #2B2B2B;
+    border-radius: 30px;
+    height: 392px;
+    width: 361px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 218px;
+    margin-top: 100px;
+
+}
+
+.calenderHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 30px;
+    margin-top: 25px;
+    margin-bottom: 9px;
+    font-weight: 700;
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
+.calenderHeader #prevMonth {
+    width: 29px;
+    height: 29px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #D5D5D5;
+    margin-left: 234px;
+    position:absolute;
+}
+
+
+
+.calenderHeader #nextMonth {
+    width: 29px;
+    height: 29px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #D5D5D5;
+    margin-right: 28px;
+}
+
+.month-year {
+    font-size: 24px;
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+
+table {
+    width: 313px;
+    margin-left: 31px;
+    margin-right: 28px;
+    color: #D5D5D5;
+    border-collapse: separate; 
+    border-spacing: 5px; 
+    table-layout: fixed;
+}
+
+th, td {
+    width: 15px;
+    height: 17px;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 400;;
+
+}
+
+th {
+    background: #2B2B2B;
+}
+
+td {
+    cursor: pointer;
+    background-color: #2B2B2B;
+    border-radius: 50%;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+td.not-current-month {
+    background-color: #2B2B2B;
+    color: #727272; 
+}
+
+td:hover {
+    background: #11e5b497;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+/* 오늘의 별다줄 */
+.today {
+    background: #2B2B2B;
+    border-radius: 30px;
+    height: 202px;
+    width: 668px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    grid-area: second;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 624px;
+    margin-top: 100px;
+}
+
+.today .todayHeader {
+    font-size: 20px;
+    color: #FFFFFF;
+    font-weight: 400;
+    margin-left: 19px;
+    margin-top: 13px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #3B3B3B;
+}
+
+.today .todayContainer {
+    background-color: #3B3B3B;
+    width: 628px;
+    height: 128px;
+    margin-left: 17px;
+    margin-top: 12px;
+    border-radius: 5px 5px 20px 20px;
+
+}
+.today .todayContainer ul {
+    list-style-type: disc; 
+    list-style-position: inside; 
+    margin-left: 0; 
+    padding-left: 15px; 
+    padding-right: 15px;
+    padding-top: 12px;
+    padding-bottom: 18px;
+}
+.today .todayContainer li {
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 300;
+    text-align: left;
+    padding-top: 3px;
+    
+}
+/* 오늘의 해시태그 */
+.hashtag {
+    background: #2B2B2B;
+    border-radius: 30px;
+    height: 160px;
+    width: 441px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 624px;
+    margin-top: 332px;
+}
+
+
+.hashtag .hashtagHeader {
+    font-size: 20px;
+    color: #FFFFFF;
+    font-weight: 400;
+    margin-left: 19px;
+    margin-top: 13px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #3B3B3B;
+}
+
+
+.hashContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.hashtag .hash1 {
+    width: 196px;
+    height: 82px;
+    background-color: rgba(104, 61, 229, 0.78);
+    border-radius: 20px;
+    margin-top: 15px;
+    margin-left: 15px;
+    display: inline;
+    font-size: 20px;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
+
+.hashtag .hash2 {
+    width: 196px;
+    height: 82px;
+    background-color: #4A4059;
+    border-radius: 20px;
+    margin-top: 15px;
+    margin-left: 15px;
+    display: inline;
+    font-size: 20px;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
+
+
+/* 가장 최근 기록으로 이동하기 */
+.recent {
+    background: #683DE5;
+    border-radius: 30px;
+    height: 160px;
+    width: 197px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 1095px;
+    margin-top: 332px;
+}
+
+.recent .recentHeader {
+    font-size: 19px;
+    color: #FFFFFF;
+    font-weight: 500;
+    width: 188px;
+    height: 48px;
+    margin-left: 14px;
+    margin-right: 24px;
+    margin-top: 25px;
+}
+
+.recent i {
+    font-size: 30px;
+    color: #FFFFFF;
+    margin-left: 149px;
+    margin-top: 35px;
+}
+
+
+/* 새로운 기록 작성 */
+.writeBackground {
+    background: #2B2B2B;
+    border-radius: 30px;
+    height: 215px;
+    width: 1073px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 219px;
+    margin-top: 522px;
+}
+
+.write {
+    background: transparent;
+    border-radius: 30px;
+    height: 215px;
+    width: 1073px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 219px;
+    margin-top: 522px;
+}
+
+.write .writeHeader {
+    font-size: 24px;
+    color: #FFFFFF;
+    font-weight: 600;
+    width: 120px;
+    height: 70px;
+    margin-left: 56px;
+    margin-top: 52px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.templateButton {
+    width: 114px;
+    height: 38px;
+    width: 124px;
+    border-radius: 50px; 
+    background-color: transparent; 
+    color: #FFFFFF; 
+    text-align: center;
+    font-weight: 200;
+    font-size: 13px;
+    cursor: pointer; 
+    border: none;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    margin-left: 46px;
+    margin-top: 15px; 
+}
+
+.main_template_tab1 {
+    width: 221px; 
+    height: 152px;
+    background-color:rgba(255, 255, 255, 0.82);
+    border-radius: 25px;
+    box-sizing: border-box;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 300px;
+    margin-top: 30px;
+}
+
+.main_template_tab2 {
+    width: 221px; 
+    height: 152px;
+    background-color:rgba(255, 255, 255, 0.82);
+    border-radius: 25px;
+    box-sizing: border-box;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 555px;
+    margin-top: 30px;
+}
+
+.main_template_tab3 {
+    width: 221px; 
+    height: 152px;
+    background-color:rgba(255, 255, 255, 0.82);
+    border-radius: 25px;
+    box-sizing: border-box;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 810px;
+    margin-top: 30px;
+}
+
+.tab_header {
+    position: flex;
+    top: 10px;
+    left: 10px;
+}
+
+.tab_footer {
+    color: black;
+    position: flex;
+    right: 10px;
+    text-align: right;
+}
+
+.main_template_tab1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(17, 229, 179, 0.5), transparent);
+    border-radius: 25px;
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+
+.main_template_tab1:hover::before {
+    opacity: 1;
+}
+
+
+.main_template_tab2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(17, 229, 179, 0.5), transparent);
+    border-radius: 25px;
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+
+.main_template_tab2:hover::before {
+    opacity: 1;
+}
+
+
+.main_template_tab3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(17, 229, 179, 0.5), transparent);
+    border-radius: 25px;
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+
+.main_template_tab3:hover::before {
+    opacity: 1;
 }
