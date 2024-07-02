@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./static/diary_template.js" defer></script>
+    <script src="./static/main.js" defer></script>
+    <title>별다줄</title>
+</head>
+<body>
+<!--좌측 네비게이션 바 이걸 중복해서 쓰도록하세요-->
+<nav>
+    <div class="logo">
+        <img src="./img/logo.png" alt="Logo">
+    </div>
+    <ul>
+        <li><a href="./main.html" onclick="changeImage(event, this)"><img src="./img/Icon/home_icon.png" alt="Home"></a></li>
+        <li><a href="./diary_template.html" onclick="changeImage(event, this)"><img src="./img/Icon/click_diary_icon.png" alt="Diary"></a></li>
+        <li><a href="./diary_check.html" onclick="changeImage(event, this)"><img src="./img/Icon/book_icon.png" alt="Book"></a></li>
+        <li><a href="./idea.html" onclick="changeImage(event, this)"><img src="./img/Icon/idea_icon.png" alt="Idea"></a></li>
+        <li class="bottom_nav_icon"><a href="./profile.html" onclick="changeImage(event, this)"><img src="./img/Icon/profile_icon.png" alt="Idea"></a></li>
+    </ul>
+</nav>
+
+<div class="content">
+    <h1>템플릿 선택</h1>
+    <div class="template_container">
+        <div class="title_option">
+            <span>모든 템플릿</span>
+        </div>
+        <div class="all_template_container">
+            <div class="template_tab" data-template="basic">
+                <div class="tab_header">
+                    <h2>basic</h2>
+                    <h3>기본템플릿</h3>
+                </div>
+                <div class="tab_footer">
+                    <p>개발내용</p>
+                    <p>느낀 점</p>
+                    <p>특이사항</p>
+                    <p>내일의 계획</p>
+                </div>
+            </div>
+            <div class="template_tab" data-template="feature">
+                <div class="tab_header">
+                    <h2>feature</h2>
+                    <h3>신규 기능 개발</h3>
+                </div>
+                <div class="tab_footer">
+                    <p>신규 기능</p>
+                    <p>이용 방안</p>
+                    <p>개선점</p>
+                    <p>개발 계획</p>
+                </div>
+            </div>
+            <div class="template_tab" data-template="docs">
+                <div class="tab_header">
+                    <h2>docs</h2>
+                    <h3>개발 문서 수정</h3>
+                </div>
+                <div class="tab_footer">
+                    <p>추가된 내용</p>
+                    <p>변경된 내용</p>
+                    <p>관련 의견</p>
+                    <p>문서 수정 계획</p>
+                </div>
+            </div>
+            <div class="template_tab" data-template="test">
+                <div class="tab_header">
+                    <h2>test</h2>
+                    <h3>테스트 진행</h3>
+                </div>
+                <div class="tab_footer">
+                    <p>테스트 방식</p>
+                    <p>진행/결과</p>
+                    <p>개선점</p>
+                    <p>개발 계획</p>
+                </div>
+            </div>
+            <div class="template_tab" data-template="android">
+                <div class="tab_header">
+                    <h2>Android</h2>
+                    <h3>앱 개발</h3>
+                </div>
+                <div class="tab_footer">
+                    <p>핵심 기능</p>
+                    <p>트러블 슈팅</p>
+                    <p>라이브러리/기술</p>
+                    <p>내일의 계획</p>
+                </div>
+            </div>
+            <div class="template_tab" data-template="ios">
+                <div class="tab_header">
+                    <h2>ios</h2>
+                    <h3>개발</h3>
+                </div>
+                <div class="tab_footer">
+                    <p>UI/UX 개선 사항</p>
+                    <p>해결한 문제</p>
+                    <p>개발 가이드라인</p>
+                    <p>테스트/배포 계획</p>
+                </div>
+            </div>
+            <div class="template_tab" data-template="node">
+                <div class="tab_header">
+                    <h2>Node.js</h2>
+                    <h3>개발</h3>
+                </div>
+                <div class="tab_footer">
+                    <p>구현한 기능</p>
+                    <p>해결한 문제</p>
+                    <p>사용한 패키지</p>
+                    <p>배포/모니터링 계획</p>
+                </div>
+            </div>
+            <div class="template_tab" data-template="web">
+                <div class="tab_header">
+                    <h2>Web</h2>
+                    <h3>웹 개발</h3>
+                </div>
+                <div class="tab_footer">
+                    <p>UI 개선 사항</p>
+                    <p>해결한 문제</p>
+                    <p>성능 최적화</p>
+                    <p>내일의 계획</p>
+                </div>
+            </div>
+            <div class="template_tab" data-template="design">
+                <div class="tab_header">
+                    <h2>Design</h2>
+                    <h3>디자인</h3>
+                </div>
+                <div class="tab_footer">
+                    <p>디자인 프로세스</p>
+                    <p>UX 문제 해결</p>
+                    <p>디자인 시스템</p>
+                    <p>협업 계획</p>
+                </div>
+            </div>
+            <div class="template_tab" data-template="plan">
+                <div class="tab_header">
+                    <h2>Plan</h2>
+                    <h3>일정</h3>
+                </div>
+                <div class="tab_footer">
+                    <p>논의한 프로젝트 내용</p>
+                    <p>일정관리/리스크 대응</p>
+                    <p>커뮤니케이션 방식</p>
+                    <p>계획</p>
+                </div>
+            </div>
+            <div class="template_tab" id="react_template" data-template="react">
+                <div class="tab_header">
+                    <h2>React Native/Flutter</h2>
+                    <h3>웹 개발</h3>
+                </div>
+                <div class="tab_footer">
+                    <p>구현한 기능</p>
+                    <p>해결한 연동 이슈</p>
+                    <p>새로 적용한 기법</p>
+                    <p>내일의 계획</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

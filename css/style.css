@@ -1,0 +1,9 @@
+@import "/css/components/sidebar.css";
+
+@import "screens/login.css";
+@import "screens/main.css";
+@import "screens/account.css";
+@import "screens/idea.css";
+@import "screens/diary_template.css";
+@import "screens/write_diary.css";
+@import "screens/profile.css";

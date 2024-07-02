@@ -1,0 +1,13 @@
+body{
+    background-color: #181818;
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 200px;
+    padding: 20px;
+    flex: 1;
+    color: white;
+}
