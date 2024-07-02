@@ -7,20 +7,20 @@
 }
 .template_tab{
     position: relative;
-    width: 211px; 
-    height: 152px;
+    width: 227px; 
+    height: 165px;
     background-color:rgba(255, 255, 255, 0.82);
-    border-radius: 25px;
+    border-radius: 30px;
     margin-bottom: 20px;
     box-sizing: border-box;
-    padding: 20px;
+    padding: 30px;
 }
 
 .all_template_container{
     margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
-    gap: 50px; /* 박스 사이의 간격 설정 */
+    gap: 50px;
 }
 
 .tab_header {
@@ -48,7 +48,7 @@
 }
 .tab_footer p {
     margin: 0;
-    font-size: 12px;
+    font-size: 14px;
     color: #181818;
 }
 

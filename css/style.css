@@ -1,5 +1,9 @@
+
+/* components */
 @import "/css/components/sidebar.css";
 
+
+/* screen */
 @import "screens/login.css";
 @import "screens/main.css";
 @import "screens/account.css";
@@ -7,3 +11,4 @@
 @import "screens/diary_template.css";
 @import "screens/write_diary.css";
 @import "screens/profile.css";
+@import "screens/write_idea.css";

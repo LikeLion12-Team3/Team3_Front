@@ -144,8 +144,9 @@
 }
 
 .diary_btn{
-        width: 30%;
+        width: 108px;
         margin-top: 30px;
+        margin-left: 20px;
         padding: 15px;
         background-color: #11E5B3;
         color: black;
@@ -156,12 +157,28 @@
 }
 
 .diary_btn:hover {
-    background-color: #0fb895; /* 호버 시 배경색 */
-    color: white; /* 호버 시 텍스트 색 */
+    background-color: #0fb895;
+    color: white; 
 }
 
 /* disabled 상태일 때 스타일 */
 .diary_btn[disabled] {
     background-color: #ccc;
     color: #666;
+}
+
+#diary_cancel_btn {
+    width: 108px;
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #3B3B3B;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 50px;
+    border: none;
+}
+
+#diary_cancel_btn:hover {
+    background-color: #2a2a2a;
 }

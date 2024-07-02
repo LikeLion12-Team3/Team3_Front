@@ -11,3 +11,9 @@ body{
     flex: 1;
     color: white;
 }
+
+#content_subtitle{
+    font-size: 28px;
+    color: #11E5B3;
+    font-weight: bold;
+}

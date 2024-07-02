@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('diary_content3'),
         document.getElementById('diary_content4')
     ];
-    const saveButton = document.getElementById('save_btn');
+    const saveButton = document.getElementById('diary_save_btn');
 
     const checkInputs = () => {
         const isTitleFilled = titleInput.value.trim() !== '';
@@ -106,4 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
     diaryContents.forEach(content => content.addEventListener('input', checkInputs));
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    const cancelButton = document.getElementById("diary_cancel_btn");
+    cancelButton.addEventListener("click", function() {
+        window.history.back();
+    });
+});
 

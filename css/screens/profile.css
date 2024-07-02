@@ -17,9 +17,10 @@ body{
     align-items: center;
     box-sizing: border-box;
     border-radius: 15px;
-    width: 482px;
-    height: 672px;
+    width: 480px;
+    height: 384px;
     border: 1px solid #3B3B3B; 
+    text-align: center;
 }
 
 #profile_title{
