@@ -5,9 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./static/write_idea.js"></script>
+    <script src="./static/main.js"></script>
     <title>별다줄</title>
 </head>
 <body>
-    
+    <nav>
+        <div class="logo">
+            <img src="./img/logo.png" alt="Logo">
+        </div>
+        <ul>
+            <li><a href="./main.html" onclick="changeImage(event, this)"><img src="./img/Icon/home_icon.png" alt="Home"></a></li>
+            <li><a href="./diary_template.html" onclick="changeImage(event, this)"><img src="./img/Icon/diary_icon.png" alt="Diary"></a></li>
+            <li><a href="./diary_check.html" onclick="changeImage(event, this)"><img src="./img/Icon/book_icon.png" alt="Book"></a></li>
+            <li><a href="./idea.html" onclick="changeImage(event, this)"><img src="./img/Icon/click_idea_icon.png" alt="Idea"></a></li>
+            <li class="bottom_nav_icon"><a href="./profile.html" onclick="toggleProfile(event, this)"><img src="./img/Icon/profile_icon.png" alt="Idea"></a></li>
+        </ul>
+    </nav>
+    <div class="content">
+        <h1>2024년 6월 22일</h1>
+        <span id="content_subtitle">아이디어 작성</span>
+        <div class="write_idea_container">
+            <div class="write_idea_title">
+                <span>제목 <span style="color:red;">*</span></span>
+                <input type="text" placeholder="제목을 입력하세요.">
+            </div>
+            <div class="write_idea_middle">
+                <span>이미지</span>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
