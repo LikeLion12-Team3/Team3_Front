@@ -1,0 +1,254 @@
+
+/* 검색창 */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-self: start;
+    margin-top: 32px;
+    width: 550px;
+    height: 46px;
+    background-color: #2B2B2B;
+    border-radius: 50px;
+    cursor: pointer;
+
+}
+
+#search-input {
+    width: 500px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: transparent;
+    margin-left: 15px;
+    margin-top: 11px;
+    outline: none;
+    color: #D5D5D5;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+
+#search-button {
+    margin-left: 10px;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 50px;
+    width: 50px;
+    z-index: 2;
+    background-color: transparent;
+    color: #D5D5D5;
+    cursor: pointer;
+}
+
+#search-button i {
+    font-size: 25px;
+}
+
+
+
+/* 캘린더 */
+.calendar#diaryCalendar {
+    background: #2B2B2B;
+    border-radius: 30px;
+    height: 392px;
+    width: 361px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 218px;
+    margin-top: 128px;
+
+}
+
+/* 2024년 00월 00일의 일기 */
+#diary-date {
+    font-size: 40px;
+    font-weight: 800;
+    color: white; /* 기본 글씨 색을 흰색으로 설정 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 668px;
+    margin-top: 128px;
+}
+
+#diary-date .date {
+    color: #11E5B3;
+}
+
+
+/* 그날의 별다줄 */
+.today#diary_check {
+    background: #2B2B2B;
+    border-radius: 30px;
+    height: 310px;
+    width: 683px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    grid-area: second;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 644px;
+    margin-top: 210px;
+}
+
+.today#diary_check .todayHeader {
+    font-size: 20px;
+    color: #FFFFFF;
+    font-weight: 400;
+    margin-left: 19px;
+    margin-top: 13px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #3B3B3B;
+}
+
+.today#diary_check .todayContainer {
+    background-color: #3B3B3B;
+    width: 649px;
+    height: 233px;
+    margin-left: 17px;
+    margin-top: 12px;
+    border-radius: 5px 5px 20px 20px;
+
+}
+.today .todayContainer ul {
+    list-style-type: disc; 
+    list-style-position: inside; 
+    margin-left: 0; 
+    padding-left: 15px; 
+    padding-right: 15px;
+    padding-top: 12px;
+    padding-bottom: 18px;
+}
+.today .todayContainer li {
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 300;
+    text-align: left;
+    padding-top: 3px;
+    
+}
+
+/* 그날의 전체 기록 */
+.record {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 218px;
+    margin-top: 589px;
+}
+
+.record .recordHeader {
+    width: 1108px;
+    height: 84px;
+    border-radius: 30px 30px 0 0;
+    background: linear-gradient(to top, #181818, #2B2B2B);
+
+}
+
+.record .recordHeader {
+    text-align: center;
+}
+
+.record .recordHeader .record-h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-top: 15px;
+}
+
+.record .recordHeader .record-h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #D5D5D5;
+    margin-top: 6px;
+}
+
+/* 일기 */
+.detailRecord {
+    width: 1108px;
+    height: fit-content;
+    background-color: 2B2B2B;
+    border: 1px solid #3B3B3B;
+    border-radius: 30px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    flex-direction: column;
+    color: #FFFFFF;
+    padding: 30px 40px;
+}
+
+#recordTitle {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+#recordDate {
+    font-size: 24px;
+    font-weight: 600;
+    color: #727272;
+    margin-top: 10px;
+}
+
+#recordContentHeader {
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+#recordContent {
+    font-size: 16px;
+    font-weight: 300;
+    margin-top: 10px;
+    line-height: 22px;
+}
+
+#recordContent hr {
+    border: 3px solid #2B2B2B;
+    margin-top: 20px;
+}
+
+.hashBox {
+    width: 1024px;
+    background-color: transparent;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#RecordHashList .hashs{
+    color: #11E5B3;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.hashBox .recordModify {
+    width: 71px;
+    height: 35px;
+    background-color: #11E5B3;
+    border: none;
+    border-radius: 30px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.hashBox .recodeDelete {
+    width: 71px;
+    height: 35px;
+    background-color: #2B2B2B;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
