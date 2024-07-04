@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://kit.fontawesome.com/cccce09b52.js" crossorigin="anonymous"></script>
+    <script src="./static/main.js"></script>
+    <script src="./static/search_diary.js"></script>
+    <title>별다줄</title>
+</head>
+<body>
+    <!--좌측 네비게이션 바 이걸 중복해서 쓰도록하세요-->
+<nav>
+    <div class="logo">
+        <img src="./img/logo.png" alt="Logo">
+    </div>
+    <ul>
+        <li><a href="./main.html" onclick="changeImage(event, this)"><img src="./img/Icon/home_icon.png" alt="Home"></a></li>
+        <li><a href="./diary_template.html" onclick="changeImage(event, this)"><img src="./img/Icon/diary_icon.png" alt="Diary"></a></li>
+        <li><a href="./diary_check.html" onclick="changeImage(event, this)"><img src="./img/Icon/click_book_icon.png" alt="Book"></a></li>
+        <li><a href="./idea.html" onclick="changeImage(event, this)"><img src="./img/Icon/idea_icon.png" alt="Idea"></a></li>
+        <li class="bottom_nav_icon"><a href="./profile.html" onclick="changeImage(event, this)"><img src="./img/Icon/profile_icon.png" alt="Idea"></a></li>
+    </ul>
+</nav>
+
+
+    <!-- 검색창 -->
+    <div class="search-container2">
+        <input type="text" id="search-input2" placeholder="해시태그 검색">
+        <button id="search-button2"><img src="/img/Icon/search_icon.png"></button>
+    </div>
+
+    <div id="recent-modal" class="modal">
+        <div class="modal-content">
+            <!-- <span class="close">&times;</span> -->
+            <div id="recent-searches"></div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
