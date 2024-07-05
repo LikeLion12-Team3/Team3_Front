@@ -33,3 +33,118 @@
     flex-wrap: wrap;
     margin-top: 30px;
 }
+
+.write_idea_left{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 530px;
+}
+
+.write_idea_right{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#idea_subtitle1{
+    margin-bottom: 10px;
+}
+
+#idea_content1{
+    width: 502px;
+    height: 442px;
+    gap: 10px;
+    border-radius: 20px;
+    border: none; 
+    outline: none; 
+    resize: none; 
+    padding: 20px;
+    background-color: #2B2B2B;
+    color: white;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.image_preview_container{
+    width: 502px;
+    height: 442px;
+}
+
+.idea_btn_container{
+    display: flex;
+    margin-top: 0;
+    justify-content: flex-end;
+}
+
+.idea_btn{
+        width: 108px;
+        margin-top: 30px;
+        margin-left: 20px;
+        padding: 15px;
+        background-color: #11E5B3;
+        color: black;
+        font-weight: bold;
+        font-size: 15px;
+        border-radius: 50px;
+        border: none;
+}
+
+.idea_btn:hover {
+    background-color: #0fb895;
+    color: white; 
+}
+
+/* disabled 상태일 때 스타일 */
+.idea_btn[disabled] {
+    background-color: #ccc;
+    color: #666;
+}
+
+#idea_cancel_btn {
+    width: 108px;
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #3B3B3B;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 50px;
+    border: none;
+}
+
+#idea_cancel_btn:hover {
+    background-color: #2a2a2a;
+}
+
+.image-preview {
+    width: 241px;
+    height: 194px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 30px;
+}
+
+.image-preview img {
+    object-fit: fill;
+}
+
+.upload-box {
+    width:241px;
+    height: 194px;
+    background-color: #3B3B3B;
+    border: none;
+    border-radius: 30px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.upload-box input[type="file"] {
+    display: none;
+}

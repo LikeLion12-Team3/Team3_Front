@@ -23,7 +23,7 @@
         </ul>
     </nav>
     <div class="content">
-        <h1>2024년 6월 22일</h1>
+        <h1 id="write_idea_date"></h1>
         <span id="content_subtitle">아이디어 작성</span>
         <div class="write_idea_container">
             <div class="write_idea_title">
@@ -31,7 +31,29 @@
                 <input type="text" placeholder="제목을 입력하세요.">
             </div>
             <div class="write_idea_middle">
-                <span>이미지</span>
+                <div class="write_idea_left">
+                    <span id="idea_subtitle1">아이디어 내용 <span style="color:red;">*</span></span>
+                    <textarea id="idea_content1" placeholder="내용을 입력하세요."></textarea>
+                </div>
+                <div class="write_idea_right">
+                    <span id="idea_subtitle2">이미지</span>
+                    <div class="image_preview_container">
+                        <!-- 이미지 업로드 상자 -->
+                        <div class="upload-box">
+                            <label for="fileInput">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-plus-circle">
+                                    <line x1="12" y1="8" x2="12" y2="16"></line>
+                                    <line x1="8" y1="12" x2="16" y2="12"></line>
+                                </svg>
+                            </label>
+                            <input type="file" id="fileInput" accept="image/*">
+                        </div>
+                    </div>
+                    <div class="idea_btn_container"><button class="idea_btn" id="idea_cancel_btn">취소</button><button class="idea_btn" id="idea_save_btn">저장</button></div>
+                </div>
+                
             </div>
         </div>
     </div>
