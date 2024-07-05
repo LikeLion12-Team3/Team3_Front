@@ -1,3 +1,7 @@
+.write_diary_container{
+    margin-top: 20px;
+}
+
 .write_diary_title {
     display: flex;
     flex-direction: column;
@@ -31,7 +35,7 @@
     margin-top: 20px;
     display: flex;
     flex-direction: column;
-    width: 700px;
+    width: 660px;
 }
 
 .write_diary_middle_right{
@@ -58,8 +62,8 @@
 }
 
 #diary_content1{
-    width: 600px;
-    height: 350px;
+    width: 635px;
+    height: 416px;
     gap: 10px;
     border-radius: 20px;
     border: none; 
@@ -73,8 +77,8 @@
 }
 
 #diary_content2{
-    width: 600px;
-    height: 200px;
+    width: 635px;
+    height: 248px;
     gap: 10px;
     border-radius: 20px;
     border: none; 
@@ -87,8 +91,8 @@
 }
 
 #diary_content3{
-    width: 250px;
-    height: 200px;
+    width: 359px;
+    height: 286px;
     border-radius: 20px;
     gap: 10px;
     border: none; 
@@ -102,8 +106,8 @@
 }
 
 #diary_content4{
-    width: 250px;
-    height: 100px;
+    width: 359px;
+    height: 182px;
     gap: 10px;
     border-radius: 20px;
     border: none; 
@@ -123,8 +127,8 @@
 
 #hashtag_content{
     font-family:sans-serif;
-    width: 250px;
-    height: 100px;
+    width: 359px;
+    height: 185px;
     gap: 10px;
     border-radius: 20px;
     border: 1px solid #11E5B3;
@@ -181,4 +185,53 @@
 
 #diary_cancel_btn:hover {
     background-color: #2a2a2a;
+}
+
+#write_diary_category{
+    color: #11E5B3;
+}
+
+#guideline{
+   width: 150px;
+   height: 19px;
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.title-container span {
+    display: flex;
+    align-items: center;
+}
+.title-container img {
+    margin-left: 10px; /* 이미지와 텍스트 사이의 간격 조정 */
+}
+.image-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.overlay {
+    position: absolute;
+    top: 100%; /* 이미지 아래에 위치 */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    width: 300px; /* 박스 너비 */
+    text-align: left; /* 텍스트 정렬 */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    z-index: 10;
+}
+
+.image-wrapper:hover .overlay {
+    opacity: 1;
 }

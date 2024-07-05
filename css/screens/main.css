@@ -10,7 +10,7 @@ body{
 
 .content {
     position: absolute;
-    top: 0;
+    top: 10px;
     left: 0;
     margin-left: 200px;
     padding: 20px;
