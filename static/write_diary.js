@@ -3,66 +3,77 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const templates = {
         basic: {
+            name:"Basic",
             subtitle1: "개발내용",
             subtitle2: "느낀점",
             subtitle3: "특이사항",
             subtitle4: "내일의 계획"
         },
         feature: {
+            name:"Feature",
             subtitle1: "신규 기능",
             subtitle2: "이용 방안",
             subtitle3: "개선점",
             subtitle4: "개발 계획"
         },
         docs: {
+            name:"Docs",
             subtitle1: "추가된 내용",
             subtitle2: "변경된 내용",
             subtitle3: "관련 의견",
             subtitle4: "문서 수정 계획"
         },
         test: {
+            name:"Test",
             subtitle1: "테스트 방식",
             subtitle2: "진행/결과",
             subtitle3: "개선점",
             subtitle4: "개발 계획"
         },
         android: {
+            name:"Android",
             subtitle1: "핵심 기능",
             subtitle2: "트러블 슈팅",
             subtitle3: "라이브러리/기술",
             subtitle4: "내일의 계획"
         },
         ios: {
+            name:"Ios",
             subtitle1: "UI/UX 개선 사항",
             subtitle2: "해결한 문제",
             subtitle3: "개발 가이드라인",
             subtitle4: "테스트/배포 계획"
         },
         node: {
+            name:"Node.js",
             subtitle1: "구현한 기능",
             subtitle2: "해결한 문제",
             subtitle3: "사용한 패키지",
             subtitle4: "배포/모니터링 계획"
         },
         web: {
+            name:"Web",
             subtitle1: "UI 개선 사항",
             subtitle2: "해결한 문제",
             subtitle3: "성능 최적화",
             subtitle4: "내일의 계획"
         },
         design: {
+            name:"Design",
             subtitle1: "디자인 프로세스",
             subtitle2: "UX 문제 해결",
             subtitle3: "디자인 시스템",
             subtitle4: "협업 계획"
         },
         plan: {
+            name:"Plan",
             subtitle1: "논의한 프로젝트 내용",
             subtitle2: "일정관리/리스크 대응",
             subtitle3: "커뮤니케이션 방식",
             subtitle4: "계획"
         },
         react: {
+            name:"React Native/Flutter",
             subtitle1: "구현한 기능",
             subtitle2: "해결한 연동 이슈",
             subtitle3: "새로 적용한 기법",
@@ -71,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     if (templateType && templates[templateType]) {
+        document.getElementById('write_diary_category').textContent = templates[templateType].name;
         document.getElementById('diary_subtitle1').textContent = templates[templateType].subtitle1;
         document.getElementById('diary_subtitle2').textContent = templates[templateType].subtitle2;
         document.getElementById('diary_subtitle3').textContent = templates[templateType].subtitle3;
