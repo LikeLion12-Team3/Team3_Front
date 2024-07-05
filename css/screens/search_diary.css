@@ -95,6 +95,7 @@
     width: 512px;
     margin-left: 15px;
     display: flex;
+    background-color: #2B2B2B;
 }
 
 #recent-searches .search-item-wrapper:hover {
@@ -116,5 +117,9 @@
     margin-left: 0px;
     margin-right: 10px; 
     font-weight: 300;
+}
+
+#none-searchs {
+    background-color: red;
 }
 
