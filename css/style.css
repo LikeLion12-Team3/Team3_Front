@@ -13,3 +13,6 @@
 @import "screens/write_diary.css";
 @import "screens/profile.css";
 @import "screens/write_idea.css";
+@import "screens/diary_check.css";
+@import "screens/search_diary.css";
+@import "screens/search_result.css";

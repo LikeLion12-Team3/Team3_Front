@@ -1,0 +1,125 @@
+/* 검색창 */
+.search-container2 {
+    display: flex;
+    justify-content: center;
+    align-self: start;
+    margin-top: 32px;
+    width: 550px;
+    height: 46px;
+    background-color: #2B2B2B;
+    border-radius: 50px;
+    cursor: pointer;
+
+}
+
+#search-input2 {
+    width: 500px;
+    height: 46px;
+    border-radius: 50px;
+    background-color: transparent;
+    margin-left: 24px;
+    margin-top: 1px;
+    outline: none;
+    border: none;
+    color: #d5d5d5;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+#search-input2::placeholder {
+    color: #d5d5d5;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+
+#search-button2 {
+    margin-left: 10px;
+    border: none;
+    border-radius: 50px;
+    width: 48px;
+    z-index: 2;
+    cursor: pointer;
+}
+
+
+/* 최근 검색어 모달 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-self: start;
+    width: 550px;
+    height: 250px;
+    margin-top: 10px;
+    /* overflow: auto; */
+}
+
+.modal-content {
+    background-color: #2B2B2B;
+    margin: 15% auto;
+    padding: 5px;
+    width: 555px;
+    height: 247px;
+    border-radius: 30px;
+    color: white;
+    border: 2px solid #3B3B3B;
+}
+
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    margin-left: 470px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#recent-modal {
+    display: none;
+}
+
+#recent-searches .search-item-wrapper {
+    padding: 12.7px 20px;
+    cursor: pointer;
+    border-bottom: 1px solid #3B3B3B;
+    width: 512px;
+    margin-left: 15px;
+    display: flex;
+    background-color: #2B2B2B;
+}
+
+#recent-searches .search-item-wrapper:hover {
+    background-color: #3B3B3B;
+    border-radius: 20px;
+}
+
+#recent-searches .search-num {
+    color: #727272;
+    font-size: 16px;
+    margin-left: auto;
+    margin-right: 1px; 
+    font-weight: 300;
+}
+
+#recent-searches .search-str {
+    color: #727272;
+    font-size: 16px;
+    margin-left: 0px;
+    margin-right: 10px; 
+    font-weight: 300;
+}
+
+#none-searchs {
+    background-color: red;
+}
+
