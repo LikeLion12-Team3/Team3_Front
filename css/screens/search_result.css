@@ -1,0 +1,60 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* 뒤로가기 버튼 */
+.searchBackButton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 47px;
+    margin-left: 218px;
+    background-color: transparent;
+    border: none;
+}
+
+/* 제목 */
+.searchResultTitle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 42px;
+    margin-left: 316px;
+    font-size: 40px;
+    font-weight: 800;
+    color: #FFFFFF;
+
+}
+
+/* 총 12개의 일기 */
+.searchResultNum {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    margin-top: 141px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #727272;
+}
+
+.search_hash_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: st;
+    flex-wrap: wrap;
+    gap: 20px; /* 박스 사이의 간격 설정 */
+    padding-top: 206px;
+    padding-left: 230px; /* 여백 추가 */
+    padding-right: 160px;
+}
