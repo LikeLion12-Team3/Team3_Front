@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
+    var profile_btn = document.getElementById('profile_btn');
+    profile_btn.addEventListener("click", function() {
+        window.location.href = 'account_setting.html';
+    });
+
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
     var withdrawLink = document.getElementById('withdraw');
     
     withdrawLink.addEventListener('click', function(event) {

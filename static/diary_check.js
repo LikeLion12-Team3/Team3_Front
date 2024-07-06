@@ -88,4 +88,13 @@ document.addEventListener('DOMContentLoaded', function() {
     generateCalendar(currentMonth, currentYear);
     updateDiaryDate(currentYear, currentMonth, new Date().getDate());
 
+    // 일기 수정화면으로 이동
+    const modifyBtn = document.querySelectorAll(".recordModify");
+    modifyBtn.forEach(function(btn) {
+        btn.addEventListener("click", function() {
+            window.location.href = 'modify_diary.html';
+        });
+    });
+
+
 });
