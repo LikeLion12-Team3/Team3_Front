@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://kit.fontawesome.com/ba49d39b5e.js" crossorigin="anonymous"></script>
+    <script src="./static/detail_idea.js"></script>
+    <script src="./static/main.js"></script>
+    <title>별다줄</title>
+</head>
+<body>
+    <!--좌측 네비게이션 바 이걸 중복해서 쓰도록하세요-->
+<nav>
+    <div class="logo">
+        <img src="./img/logo.png" alt="Logo">
+    </div>
+    <ul>
+        <li><a href="./main.html" onclick="changeImage(event, this)"><img src="./img/Icon/home_icon.png" alt="Home"></a></li>
+        <li><a href="./diary_template.html" onclick="changeImage(event, this)"><img src="./img/Icon/diary_icon.png" alt="Diary"></a></li>
+        <li><a href="./diary_check.html" onclick="changeImage(event, this)"><img src="./img/Icon/book_icon.png" alt="Book"></a></li>
+        <li><a href="./idea.html" onclick="changeImage(event, this)"><img src="./img/Icon/click_idea_icon.png" alt="Idea"></a></li>
+        <li class="bottom_nav_icon"><a href="./profile.html" onclick="changeImage(event, this)"><img src="./img/Icon/profile_icon.png" alt="Idea"></a></li>
+    </ul>
+</nav>
+
+<!-- 아이디어 읽기화면 -->
+<div class="detailIdea">
+    <p id="ideaTitle">머신러닝</p>
+    <p id="ideaDate">2024년 00월 00일</p>
+
+    <!-- 이미지 -->
+    <div id="ideaImageBox">
+        <div class="ideaImage"><img src="./img/Icon/profile_icon.png" width="280px" height="210px"></div>
+        <div class="ideaImage"><img src="./img/Icon/profile_icon.png" width="280px" height="210px"></div>
+        <div class="ideaImage"><img src="./img/Icon/profile_icon.png" width="280px" height="210px"></div>
+    </div>
+
+
+    <div id="ideaContentHeader">
+        활동    
+    </div>
+    <div id="ideaContent">
+        농업 생산성 예측 모델: 기후, 토양, 작물 데이터를 기반으로 농업 생산성을 예측하여 최적의 재배 전략을 제공하는 머신러닝 모델 개발.<br>
+        의료 이미지 분석: 딥러닝을 이용해 의료 이미지를 분석하고 초기 단계의 질병을 자동으로 진단하는 시스템 구축.<br>
+        개인화 학습 추천 시스템: 학생의 학습 패턴과 성취도를 분석하여 맞춤형 학습 자료와 경로를 제공하는 AI 기반 추천 시스템 개발.
+        <hr>
+    </div>
+
+    <!-- 버튼 -->
+     <div class="ideaButtonBox">
+        <div>
+            <button class="ideaModify">수정</button>
+            <button class="ideaDelete">삭제</button>
+        </div>
+     </div>          
+</div>
+
+
+
+
+
+
+</body>
+</html>
