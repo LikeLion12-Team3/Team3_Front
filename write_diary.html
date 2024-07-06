@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./static/main.js"></script>
-    <script src="./static/diary_template.js"></script>
     <script src="./static/write_diary.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="./static/diary_template.js"></script>
     <title>별다줄</title>
 </head>
 <body>
@@ -27,14 +28,22 @@
 
 <div class="content">
     <span id="write_diary_category"></span>
-    <h1>2024년 6월 22일</h1>
+    <h1 id="write_diary_date"></h1>
     <div class="write_diary_container">
         <div class="write_diary_title">
             <div class="title-container">
                 <span>제목 <span style="color:red;">*</span></span>
                 <div class="image-wrapper">
                     <img id="guideline" src="./img/guide.png" alt="가이드라인">
-                    <div class="overlay">별다줄은 마크다운 형식으로 글을 작성할 수 있어요.</div>
+                    <div class="overlay">
+                        <span id="guide_title">별다줄은 마크다운 형식으로 글을 작성할 수 있어요.</span>
+                        <h3>헤더</h3>
+                        <span>헤더는 # 으로 시작해요. # 의 개수에 따라 크기가 달라져요.<br># 의 개수는 6개까지예요.</span>
+                        <h3>코드</h3>
+                        <span>코드는 backtick(‘)으로 감싸서 표현해요.<br>코드블록같이 긴 코드는 3개의 backtick(‘’’)을 이용해서 감싸요.</span>
+                        <h3>강조</h3>
+                        <span>underline(_)이나 asterisk(*)로 강조할 수 있어요.<br>이텔릭체는 한 번, 볼드체는 두 번 쓰면 돼요.</span>
+                    </div>
                 </div>
             </div>
             <input type="text" placeholder="제목을 입력하세요.">
@@ -58,5 +67,12 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('guideline').addEventListener('click', function() {
+    var overlay = this.nextElementSibling;
+    overlay.style.opacity = (overlay.style.opacity === '1') ? '0' : '1'; // 토글
+});
+</script>
 </body>
 </html>

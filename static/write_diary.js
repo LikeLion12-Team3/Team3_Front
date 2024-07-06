@@ -125,3 +125,18 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    var today = new Date();
+    var year = today.getFullYear();
+    var month = today.getMonth() + 1; // getMonth()는 0부터 시작하므로 1을 더합니다.
+    var day = today.getDate();
+
+    var dateString = year + '년 ' + month + '월 ' + day + '일';
+    var h1Element = document.getElementById('write_diary_date');
+    h1Element.textContent = dateString;
+});
+
+document.getElementById('guideline').addEventListener('click', function() {
+    var overlay = this.nextElementSibling;
+    overlay.style.opacity = (overlay.style.opacity === '1') ? '0' : '1'; // 토글
+});

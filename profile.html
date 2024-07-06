@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./static/profile.js"></script>
     <script src="./static/main.js"></script>
     <title>별다줄</title>
 </head>
@@ -26,7 +27,22 @@
 <div class="profile_box">
         <span id="profile_title">프로필</span>
         <div class="profile_middle">
+            <div class="profile_label">
+                <span>이름</span>
+                <span>이메일</span>
+            </div>
+            <div class="profile_content">
+                <span id="username">yujin</span>
+                <span id="email">jinjin17104@naver.com</span>
+            </div>
         </div> 
+        <div class="profile_bottom">
+            <button id="profile_btn">계정 설정</button>
+        </div>
+        <div class="href_container">
+            <a href="#" id="logout">로그아웃</a>
+            <a href="#" id="withdraw">회원탈퇴</a>
+        </div>
 </div>
 
 </body>

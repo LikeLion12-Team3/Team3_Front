@@ -73,7 +73,7 @@
     background-color: #2B2B2B;
     color: white;
     font-size: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 #diary_content2{
@@ -208,6 +208,7 @@
 .title-container img {
     margin-left: 10px; /* 이미지와 텍스트 사이의 간격 조정 */
 }
+
 .image-wrapper {
     position: relative;
     display: inline-block;
@@ -216,15 +217,15 @@
 .overlay {
     position: absolute;
     top: 100%; /* 이미지 아래에 위치 */
-    left: 50%;
+    left: 40%;
     transform: translateX(-50%);
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
-    padding: 20px;
-    border-radius: 5px;
+    padding: 30px;
+    border-radius: 15px;
     opacity: 0;
     transition: opacity 0.3s ease;
-    width: 300px; /* 박스 너비 */
+    width: 410px; /* 박스 너비 */
     text-align: left; /* 텍스트 정렬 */
     font-family: Arial, sans-serif;
     font-size: 14px;
@@ -232,6 +233,7 @@
     z-index: 10;
 }
 
-.image-wrapper:hover .overlay {
-    opacity: 1;
+#guide_title{
+    font-weight: bold;
+    text-align: center;
 }

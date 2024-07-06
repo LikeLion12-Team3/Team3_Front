@@ -33,3 +33,56 @@ body{
     font-weight: bold;
     margin-top: 20px;
 }
+
+.profile_middle {
+    margin-top: 50px;
+    display: flex;
+    color: white;
+    font-size: 20px;
+}
+
+.profile_label {
+    margin-right: 70px; /* Optional: Adjust spacing between label and content */
+    font-weight: bold;
+}
+
+.profile_content{
+    margin-left: 20px;
+    justify-content: flex-start;
+}
+
+.profile_label span,
+.profile_content span {
+    margin-bottom: 40px;
+    display: block;
+    text-align: left;
+}
+
+#profile_btn {
+    width: 152px;
+    height: 41px;
+    margin-top: 30px;
+    margin-left: 20px;
+    background-color: #11E5B3;
+    color: black;
+    font-size: 15px;
+    border-radius: 50px;
+    border: none;
+}
+
+#profile_btn:hover {
+    background-color: #0C997E;
+    color: white;
+}
+
+.href_container {
+    display: flex;
+    margin-left: 10px;
+    width: 140px;
+    margin-top: 15px;
+    justify-content: space-between; 
+}
+
+.href_container a {
+    color: #727272;
+}
