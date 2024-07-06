@@ -1,0 +1,162 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #181818;
+}
+
+.account_setting_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 15px;
+    width: 480px;
+    height: fit-content;
+    border: 1px solid #3B3B3B; 
+    text-align: center;
+}
+
+#account_title{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    margin-top: 52px;
+}
+
+.account_middle {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 20px;
+}
+
+.account_name {
+    width: 358px;
+    height: 43px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.account_password{
+    width: 358px;
+    height: fit-content;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 52px;
+}
+
+.account_name span{
+    width: 75px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19.09px;
+    display: block;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.account_password span {
+    width: 75px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19.09px;
+    margin-top: 13px;
+    display: block;
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+}
+
+.account_name input,
+.account_password input {
+    width: 287px;
+    height: 43px;
+    background-color: #2b2b2b;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    padding: 20px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 19.09px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.account_password_box {
+    display: flex;
+    flex-direction: column;
+}
+
+.account_password_box span {
+    color: red;
+    width: auto;
+    font-size: 12px;
+    font-weight: 200;
+}
+
+
+.account_name input::placeholder,
+.account_password input::placeholder {
+    color: #727272;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.account_password_box #new_password{
+    margin-top: 12px;
+}
+
+.account_password_box #check_new_password{
+    margin-top: 21px;
+}
+
+
+.account_bottom button {
+    width: 152px;
+    height: 41px;
+    margin-top: 30px;
+    margin-bottom: 52px;
+    font-size: 15px;
+    border-radius: 50px;
+    border: none;
+}
+
+#account_cancel_btn {
+    background-color: #2b2b2b;
+    color: #fff;
+    cursor: pointer;
+}
+
+#account_save_btn {
+    margin-left: 8px;
+    background-color: #11E5B3;
+    color: black;
+    cursor: pointer;
+}
+
+#account_cancel_btn:hover {
+    background-color: #0C997E;
+    color: white;
+}
+
+#account_save_btn:hover {
+    background-color: #0C997E;
+    color: white;
+}

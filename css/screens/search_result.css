@@ -15,7 +15,11 @@ body {
     margin-left: 218px;
     background-color: transparent;
     border: none;
+    cursor: pointer;
+    z-index: 1000;
 }
+
+
 
 /* 제목 */
 .searchResultTitle {

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://kit.fontawesome.com/cccce09b52.js" crossorigin="anonymous"></script>
+    <script src="./static/main.js"></script>
+    <script src="./static/view_diary.js"></script>
+    <title>별다줄</title>
+</head>
+<body>
+    <!--좌측 네비게이션 바 이걸 중복해서 쓰도록하세요-->
+<nav>
+    <div class="logo">
+        <img src="./img/logo.png" alt="Logo">
+    </div>
+    <ul>
+        <li><a href="./main.html" onclick="changeImage(event, this)"><img src="./img/Icon/home_icon.png" alt="Home"></a></li>
+        <li><a href="./diary_template.html" onclick="changeImage(event, this)"><img src="./img/Icon/diary_icon.png" alt="Diary"></a></li>
+        <li><a href="./diary_check.html" onclick="changeImage(event, this)"><img src="./img/Icon/click_book_icon.png" alt="Book"></a></li>
+        <li><a href="./idea.html" onclick="changeImage(event, this)"><img src="./img/Icon/idea_icon.png" alt="Idea"></a></li>
+        <li class="bottom_nav_icon"><a href="./profile.html" onclick="changeImage(event, this)"><img src="./img/Icon/profile_icon.png" alt="Idea"></a></li>
+    </ul>
+</nav>
+
+<!-- 읽기화면 -->
+<div class="detailRecord">
+    <p id="recordTitle">기획, 와이어프레임</p>
+    <p id="recordDate">2024년 00월 00일</p>
+    <div id="recordContentHeader">
+        활동    
+    </div>
+    <div id="recordContent">
+        오늘 우리는 새로운 모바일 애플리케이션 개발을 위한 첫 번째 회의를 열었다. 주요 기능과 목표 사용자층을 정의하는 기획 단계를 시작했다. 이 과정을 통해 사용자가 앱을 통해 어떤 경험을 얻을지 명확하게 정리할 수 있었다. 팀원들과 함께 다양한 아이디어를 나누고, 최종적으로 프로젝트의 방향성을 설정했다. 기획이 완료된 후, 디자이너는 주요 화면의 레이아웃과 사용자 흐름을 시각적으로 나타내기 위해 와이어프레임을 제작하기 시작했다. 와이어프레임 덕분에 개발팀은 페이지 간의 연결성과 기능 배치를 명확하게 이해할 수 있었다. 클라이언트에게도 초기 디자인 방향에 대해 피드백을 받을 수 있어서 유용했다. 오늘 하루는 매우 생산적이었고, 앞으로의 개발 과정이 기대된다. <hr>
+    </div>
+
+    <!-- 해시태그 -->
+     <div class="hashBox">
+        <div id="RecordHashList">
+            <span class="hashs">#와이어프레임</span>
+        </div>
+        <div>
+            <button class="recordModify">수정</button>
+            <button class="recodeDelete">삭제</button>
+        </div>
+     </div>          
+</div>
+
+
+
+
+
+
+
+</body>
+</html>
