@@ -1,22 +1,66 @@
 document.addEventListener('DOMContentLoaded', function() {
     var fileInput = document.getElementById('fileInput');
+var container = document.querySelector('.image_preview_container');
+var uploadBox = document.querySelector('.upload-box');
+var maxImages = 4;
 
-    fileInput.addEventListener('change', function() {
-        var file = this.files[0];
-        if (file) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                var newPreview = document.createElement('div');
-                newPreview.className = 'image-preview';
-                var newImage = document.createElement('img');
-                newImage.src = e.target.result;
-                newImage.alt = '이미지 미리보기';
-                newPreview.appendChild(newImage);
-                document.querySelector('.image_preview_container').appendChild(newPreview);
-            };
-            reader.readAsDataURL(file);
-        }
-    });
+fileInput.addEventListener('change', function() {
+    var files = this.files;
+    if (files.length > maxImages) {
+        alert('최대 4개까지만 업로드할 수 있습니다.');
+        return;
+    }
+    
+    for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            addImagePreview(e.target.result);
+            checkImageCount();
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+function addImagePreview(src) {
+    var newPreviewContainer = document.createElement('div');
+    newPreviewContainer.className = 'image-preview-container';
+
+    var newImage = document.createElement('img');
+    newImage.src = src;
+    newImage.alt = '이미지 미리보기';
+    newImage.className = 'image-preview';
+
+    var deleteButton = document.createElement('button');
+    deleteButton.className = 'delete-button';
+    deleteButton.innerHTML = '&times;';
+    deleteButton.onclick = function() {
+        newPreviewContainer.remove();
+        checkImageCount();
+    };
+
+    newPreviewContainer.appendChild(newImage);
+    newPreviewContainer.appendChild(deleteButton);
+
+    container.insertBefore(newPreviewContainer, uploadBox);
+
+    // 업로드 박스를 이동
+    container.appendChild(uploadBox);
+
+    uploadBox.style.display = 'flex';
+
+    checkImageCount();
+}
+
+function checkImageCount() {
+    var previews = document.querySelectorAll('.image-preview-container');
+    if (previews.length >= maxImages) {
+        uploadBox.style.display = 'none';
+    } else {
+        uploadBox.style.display = 'flex';
+    }
+}
+
     
     var today = new Date();
     var year = today.getFullYear();
