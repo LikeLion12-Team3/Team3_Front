@@ -243,17 +243,17 @@ td:hover {
     position: absolute;
     top: 0;
     left: 0;
-    margin-left: 1095px;
+    margin-left: 1090px;
     margin-top: 332px;
 }
 
-.recent .recentHeader {
+.recentHeader {
     font-size: 19px;
     color: #FFFFFF;
     font-weight: 500;
     width: 188px;
     height: 48px;
-    margin-left: 14px;
+    margin-left: 16px;
     margin-right: 24px;
     margin-top: 25px;
 }
@@ -265,6 +265,11 @@ td:hover {
     margin-top: 35px;
 }
 
+.recent i:hover {
+    color: #FFFFFF;
+    transform: scale(1.1); 
+    transition: color 0.3s ease, transform 0.3s ease; 
+}
 
 /* 새로운 기록 작성 */
 .writeBackground {
@@ -331,6 +336,7 @@ td:hover {
     left: 0;
     margin-left: 300px;
     margin-top: 30px;
+    cursor: pointer;
 }
 
 .main_template_tab2 {
@@ -345,6 +351,7 @@ td:hover {
     left: 0;
     margin-left: 555px;
     margin-top: 30px;
+    cursor: pointer;
 }
 
 .main_template_tab3 {
@@ -359,6 +366,7 @@ td:hover {
     left: 0;
     margin-left: 810px;
     margin-top: 30px;
+    cursor: pointer;
 }
 
 .tab_header {

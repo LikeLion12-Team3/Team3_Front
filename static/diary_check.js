@@ -95,6 +95,18 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.href = 'modify_diary.html';
         });
     });
+});
 
+document.addEventListener('DOMContentLoaded', (event) => {
+    const deleteButtons = document.querySelectorAll('.recodeDelete');
 
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const confirmation = confirm("진짜 삭제 하시겠습니까?");
+            if (confirmation) {
+                const detailRecord = button.closest('.detailRecord');
+                detailRecord.remove();
+            }
+        });
+    });
 });
