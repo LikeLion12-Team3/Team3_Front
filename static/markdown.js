@@ -58,6 +58,58 @@ function parseMd(md) {
   return md;
 }
 
+
+// 마크 다운 구현
+document.addEventListener("DOMContentLoaded", function () {
+  var editorEls = document.getElementsByClassName("editor");
+
+  // Iterate over each editor element
+  Array.from(editorEls).forEach(function(editorEl) {
+    function parse() {
+      var md = editorEl.innerHTML;
+      editorEl.innerHTML = parseMd(md);
+
+      moveCursorToEnd(editorEl);
+    }
+
+    function moveCursorToEnd(el) {
+      var range = document.createRange();
+      var sel = window.getSelection();
+      range.selectNodeContents(el);
+      range.collapse(false);
+      sel.removeAllRanges();
+      sel.addRange(range);
+      el.focus(); 
+    }
+
+    editorEl.addEventListener("keydown", function (e) {
+      //엔터 클릭시
+      if (e.keyCode === 13) {
+        e.preventDefault();
+
+        parse();
+
+        var selection = window.getSelection();
+        var range = selection.getRangeAt(0);
+        var br = document.createElement("br");
+        range.deleteContents();
+        range.insertNode(br);
+
+        var newLine = document.createElement("p");
+        newLine.setAttribute("contenteditable", "true");
+        editorEl.appendChild(newLine);
+
+        //스크롤 위치 고정
+        editorEl.scrollTop = editorEl.scrollHeight;
+      }
+    });
+
+    parse();
+  });
+});
+
+
+/*
 var rawMode = true;
 (mdEl = document.getElementById("markdown")),
   (outputEl = document.getElementById("output-html")),
@@ -88,3 +140,5 @@ mdEl.addEventListener("keyup", parse, false);
     false
   );
 })();
+*/
+

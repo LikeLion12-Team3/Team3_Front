@@ -2,6 +2,7 @@
 /* components */
 @import "/css/components/sidebar.css";
 @import "./components/sidebar.css";
+@import "./components/markdown.css";
 
 
 /* screen */

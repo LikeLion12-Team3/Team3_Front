@@ -1,0 +1,17 @@
+.editor {
+    margin: 0;
+    padding: 0;
+    line-height: 20px;
+    overflow-y: auto;
+    color: white;
+}
+
+.editor h1 {
+    line-height: 40px;
+}
+.editor h2 {
+    line-height: 30px;
+}
+.editor h3 {
+    line-height: 20px;
+}
