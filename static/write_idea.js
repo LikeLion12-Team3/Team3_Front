@@ -1,15 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
     var fileInput = document.getElementById('fileInput');
-var container = document.querySelector('.image_preview_container');
-var uploadBox = document.querySelector('.upload-box');
-var maxImages = 4;
+    var container = document.querySelector('.image_preview_container');
+    var uploadBox = document.querySelector('.upload-box');
+    var maxImages = 4;
 
-fileInput.addEventListener('change', function() {
-    var files = this.files;
-    if (files.length > maxImages) {
-        alert('최대 4개까지만 업로드할 수 있습니다.');
-        return;
-    }
+    fileInput.addEventListener('change', function() {
+        var files = this.files;
+        if (files.length > maxImages) {
+            alert('최대 4개까지만 업로드할 수 있습니다.');
+            return;
+        }
     
     for (var i = 0; i < files.length; i++) {
         var file = files[i];
@@ -60,7 +60,6 @@ function checkImageCount() {
         uploadBox.style.display = 'flex';
     }
 }
-
     
     var today = new Date();
     var year = today.getFullYear();
@@ -70,4 +69,31 @@ function checkImageCount() {
     var dateString = year + '년 ' + month + '월 ' + day + '일';
     var h1Element = document.getElementById('write_idea_date');
     h1Element.textContent = dateString;
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // DOM이 로드된 후 초기 상태를 설정하기 위해 이벤트 리스너를 추가합니다.
+    var titleInput = document.querySelector('.write_idea_title input');
+    var ideaContentInput = document.getElementById('idea_content1');
+    var saveButton = document.getElementById('idea_save_btn');
+
+    // 입력 필드에 입력이 발생할 때마다 호출될 함수를 정의합니다.
+    function checkInputs() {
+        var titleValue = titleInput.value.trim();
+        var ideaContentValue = ideaContentInput.value.trim();
+
+        // 제목과 아이디어 내용 모두 입력되어 있으면 저장 버튼을 활성화합니다.
+        if (titleValue !== '' && ideaContentValue !== '') {
+            saveButton.disabled = false;
+        } else {
+            saveButton.disabled = true;
+        }
+    }
+
+    // 입력 필드에 입력 이벤트 리스너를 추가합니다.
+    titleInput.addEventListener('input', checkInputs);
+    ideaContentInput.addEventListener('input', checkInputs);
+
+    // 초기 상태 설정을 위해 한 번 호출합니다.
+    checkInputs();
 });
