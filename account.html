@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./static/account.js"></script>
     <title>별다줄</title>
 </head>
 <body>
@@ -23,16 +24,16 @@
                 </div>
                 <div class="account_inputbox">
                     <span>비밀번호</span>
-                    <input class="password_input" type="text" name="new_password">
+                    <input class="password_input" type="password" name="new_password">
                 </div>
                 <div class="account_inputbox">
                     <span>비밀번호 확인</span>
-                    <input class="password_input" type="text" name="new_password">
+                    <input class="password_input" type="password" name="new_password">
                     <span class="notification" id="confirm_new_password_notification">*비밀번호가 일치하지 않습니다.</span>
                 </div>
             </div>
             <div class="account_btn_container">
-                <button class="account_back_btn">뒤로가기</button>
+                <button class="account_back_btn" type="button">뒤로가기</button>
                 <button class="account_btn" type="submit">계정 생성</button>
             </div>
         </form>
