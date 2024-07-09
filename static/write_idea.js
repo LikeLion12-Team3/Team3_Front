@@ -97,3 +97,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // 초기 상태 설정을 위해 한 번 호출합니다.
     checkInputs();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('guideline').addEventListener('click', function() {
+        var overlay = this.nextElementSibling;
+        overlay.style.opacity = (overlay.style.opacity === '1') ? '0' : '1'; // 토글
+    });
+    document.getElementById('idea_cancel_btn').addEventListener('click', function() {
+        window.history.back();
+    });
+});

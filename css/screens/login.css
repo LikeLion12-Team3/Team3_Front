@@ -84,6 +84,7 @@ body{
     font-size: 12px;
     margin-left: 10px;
     opacity: 1;
+    display: none;/* 로그인 정보나 비밀번호가 틀렸을 때만 띄울거니까 display: none; */
 }
 
 .login_btn{

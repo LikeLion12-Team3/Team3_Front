@@ -97,3 +97,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // 초기 상태 설정을 위해 한 번 호출합니다.
     checkInputs();
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('idea_cancel_btn').addEventListener('click', function() {
+        window.history.back();
+    });
+});
