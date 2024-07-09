@@ -1,4 +1,4 @@
-.editor {
+.markdownBox {
     margin: 0;
     padding: 0;
     line-height: 20px;
@@ -6,12 +6,12 @@
     color: white;
 }
 
-.editor h1 {
+.markdownBox h1 {
     line-height: 40px;
 }
-.editor h2 {
+.markdownBox h2 {
     line-height: 30px;
 }
-.editor h3 {
+.markdownBox h3 {
     line-height: 20px;
 }
