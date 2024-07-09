@@ -3,6 +3,7 @@
 @import "/css/components/sidebar.css";
 @import "./components/sidebar.css";
 @import "./components/markdown.css";
+@import "./components/font.css";
 
 
 /* screen */
@@ -22,3 +23,5 @@
 @import "screens/modify_idea.css";
 @import "screens/account_setting.css";
 @import "screens/detail_idea.css";
+
+
