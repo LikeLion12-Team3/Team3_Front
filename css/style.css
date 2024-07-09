@@ -19,5 +19,6 @@
 @import "screens/search_result.css";
 @import "screens/view_diary.css";
 @import "screens/modify_diary.css";
+@import "screens/modify_idea.css";
 @import "screens/account_setting.css";
 @import "screens/detail_idea.css";

@@ -1,0 +1,109 @@
+*{
+    background-color: #181818;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+img{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+
+/* 버튼 모양으로 스타일 수정 */
+.nav-link.nav-link-button {
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 20px;
+    background: var(--unnamed, #11E5B3);
+}
+
+.no-gap {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: block; /* 이미지를 블록 요소로 설정 */
+}
+
+.landing_bottom{
+    flex-direction: column;
+    color: white;
+    height: 250px;
+    display: flex;
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+
+}
+
+.landing_bottom p {
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    cursor: default;
+}
+
+.landing_startbtn {
+    display: flex;
+    width: 224px;
+    height: 48px;
+    padding: 8px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-weight: bold;
+    border-radius: 20px;
+    background: var(--unnamed, #11E5B3);
+    border: none;
+    box-shadow: 0px 4px 20px 0px rgba(17, 229, 179, 0.30);
+}
+
+.landing_startbtn:hover {
+    background-color: #0CA989; 
+    box-shadow: 0px 6px 24px 0px rgba(17, 229, 179, 0.50);
+}
+
+
+/* 네비게이션 바 스타일 */
+.navbar {
+    background-color: #181818;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    color: white;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    height: 40px; /* 아이콘의 크기를 조절할 수 있습니다 */
+    width: auto;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+}
