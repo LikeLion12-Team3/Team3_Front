@@ -5,25 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./static/login.js"></script>
     <title>별다줄</title>
 </head>
 <body>
     <div class="login_box">
         <img src="./img/logo.png" alt="logo이미지" id="logo_img">
-        <form action="#" method="get">
+        <form id="login_form" onsubmit="submitLoginForm(event)">
             <div class="login_inputcontainer">
                 <div class="login_inputbox">
-                    <input class="email_input" type="text" name="email" placeholder="아이디">
+                    <input id="email_input" class="email_input" type="text" name="email" placeholder="아이디">
                 </div>
                 <div class="login_inputbox">
-                    <input class="password_input" type="password" name="password" placeholder="비밀번호">
-                    <div class="href_div">
-                    </div>
+                    <input id="password_input" class="password_input" type="password" name="password" placeholder="비밀번호">
+                    <div class="href_div"></div>
                 </div>
-                <div class="login_error">*아이디 혹은 비밀번호가 틀립니다.</div>
+                <div class="login_error">*아이디 또는 비밀번호를 다시 확인해주세요.</div>
             </div>
             <button class="login_btn" type="submit">로그인</button>
-            <button class="join_btn" type="submit">회원가입</button>
+            <button class="join_btn" type="button" onclick="joinFunction()">회원가입</button>
         </form>
     </div>
 </body>
