@@ -140,3 +140,44 @@ document.getElementById('guideline').addEventListener('click', function() {
     var overlay = this.nextElementSibling;
     overlay.style.opacity = (overlay.style.opacity === '1') ? '0' : '1'; // 토글
 });
+
+var API_SERVER_DOMAIN = "https://api.byuldajul.shop"; //URL 주소
+//"일기 작성 페이지" ajax 연결 시작 부분 //
+document.getElementById('diary_save_btn').addEventListener('click', function() {
+     // 해시태그를 '#'으로 구분하여 배열로 변환
+     var hashtagContent = document.getElementById('hashtag_content').value;
+     var diaryHashtags = hashtagContent.split('#')
+     .map(tag => tag.trim())  // 앞뒤 공백 제거
+     .filter(tag => tag.length > 0)  // 빈 태그 제거
+     .map(tag => '#' + tag); //#을 붙여서 보낼 수 있도록
+
+    var data = {
+        title: document.getElementById('write_diary_title').value,
+        template: document.getElementById('write_diary_category').textContent,   
+        mainText: document.getElementById('diary_content1').value,
+        impression: document.getElementById('diary_content2').value,
+        remark: document.getElementById('diary_content3').value,
+        plan: document.getElementById('diary_content4').value,
+        diaryHashtags: diaryHashtags 
+    };
+
+    fetch(API_SERVER_DOMAIN + '/diary', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + accessToken
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (response.ok) {
+            window.location.replace("diary_check.html");
+        } else {
+            throw new Error('네트워크 에러: ' + response.statusText);
+        }
+    })
+    .catch(error => {
+        console.error('에러: 일기 저장 실패', error);
+        alert('일기 저장에 실패하셨습니다.');
+    });
+});
