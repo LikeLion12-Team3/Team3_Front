@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <script src="./static/account_setting.js"></script>
-    <script src="./static/main.js"></script>
+    <script src="./static/account_setting.js" defer></script>
+    <script src="./static/main.js" defer></script>
     <title>별다줄</title>
 </head>
 <body>
@@ -20,7 +20,7 @@
         <li><a href="./diary_template.html" onclick="changeImage(event, this)"><img src="./img/Icon/diary_icon.png" alt="Diary"></a></li>
         <li><a href="./diary_check.html" onclick="changeImage(event, this)"><img src="./img/Icon/book_icon.png" alt="Book"></a></li>
         <li><a href="./idea.html" onclick="changeImage(event, this)"><img src="./img/Icon/idea_icon.png" alt="Idea"></a></li>
-        <li class="bottom_nav_icon"><a href="./profile.html" onclick="toggleProfile(event, this)"><img src="./img/Icon/click_profile_icon.png" alt="Idea"></a></li>
+        <li class="bottom_nav_icon"><a href="./profile.html" onclick="toggleProfile(event, this)"><img src="./img/Icon/click_profile_icon.png" alt="Profile"></a></li>
     </ul>
 </nav>
 
@@ -35,10 +35,10 @@
                 <span>비밀번호</span>
                 <div class="account_password_box">
                     <input id="password" type="password" placeholder="현재 비밀번호"></input>
-                    <span id="error_password">*비밀번호가 틀립니다.</span>
-                    <input id="new_password" type="password" placeholder="현재 비밀번호"></input>
-                    <input id="check_new_password" type="password" placeholder="현재 비밀번호"></input>
-                    <span id="error_new_password">*비밀번호가 일치하지 않습니다.</span>
+                    <span id="error_password" style="display:none;">*비밀번호가 틀립니다.</span>
+                    <input id="new_password" type="password" placeholder="새 비밀번호"></input>
+                    <input id="check_new_password" type="password" placeholder="새 비밀번호 확인"></input>
+                    <span id="error_new_password" style="display:none;">*비밀번호가 일치하지 않습니다.</span>
                 </div>
             </div>
         </div> 
