@@ -1,49 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <script src="./static/profile.js"></script>
-    <script src="./static/main.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script type="module" src="./static/profile.js"></script>
+    <script type="module" src="./static/main.js"></script>
     <title>별다줄</title>
-</head>
-<body>
+  </head>
+  <body>
     <!--좌측 네비게이션 바 이걸 중복해서 쓰도록하세요-->
-<nav>
-    <div class="logo">
-        <img src="./img/logo.png" alt="Logo">
+    <nav>
+      <div class="logo">
+        <img src="./img/logo.png" alt="Logo" />
+      </div>
+      <ul>
+        <li>
+          <a href="./main.html" onclick="changeImage(event, this)"
+            ><img src="./img/Icon/home_icon.png" alt="Home"
+          /></a>
+        </li>
+        <li>
+          <a href="./diary_template.html" onclick="changeImage(event, this)"
+            ><img src="./img/Icon/diary_icon.png" alt="Diary"
+          /></a>
+        </li>
+        <li>
+          <a href="./diary_check.html" onclick="changeImage(event, this)"
+            ><img src="./img/Icon/book_icon.png" alt="Book"
+          /></a>
+        </li>
+        <li>
+          <a href="./idea.html" onclick="changeImage(event, this)"
+            ><img src="./img/Icon/idea_icon.png" alt="Idea"
+          /></a>
+        </li>
+        <li class="bottom_nav_icon">
+          <a href="./profile.html" onclick="toggleProfile(event, this)"
+            ><img src="./img/Icon/click_profile_icon.png" alt="Idea"
+          /></a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="profile_box">
+      <span id="profile_title">프로필</span>
+      <div class="profile_middle">
+        <div class="profile_label">
+          <span>이름</span>
+          <span>이메일</span>
+        </div>
+        <div class="profile_content">
+          <span id="username">yujin</span>
+          <span id="email">jinjin17104@naver.com</span>
+        </div>
+      </div>
+      <div class="profile_bottom">
+        <button id="profile_btn">계정 설정</button>
+      </div>
+      <div class="href_container">
+        <a href="#" id="logout">로그아웃</a>
+        <a href="#" id="withdraw">회원탈퇴</a>
+      </div>
     </div>
-    <ul>
-        <li><a href="./main.html" onclick="changeImage(event, this)"><img src="./img/Icon/home_icon.png" alt="Home"></a></li>
-        <li><a href="./diary_template.html" onclick="changeImage(event, this)"><img src="./img/Icon/diary_icon.png" alt="Diary"></a></li>
-        <li><a href="./diary_check.html" onclick="changeImage(event, this)"><img src="./img/Icon/book_icon.png" alt="Book"></a></li>
-        <li><a href="./idea.html" onclick="changeImage(event, this)"><img src="./img/Icon/idea_icon.png" alt="Idea"></a></li>
-        <li class="bottom_nav_icon"><a href="./profile.html" onclick="toggleProfile(event, this)"><img src="./img/Icon/click_profile_icon.png" alt="Idea"></a></li>
-    </ul>
-</nav>
-
-<div class="profile_box">
-        <span id="profile_title">프로필</span>
-        <div class="profile_middle">
-            <div class="profile_label">
-                <span>이름</span>
-                <span>이메일</span>
-            </div>
-            <div class="profile_content">
-                <span id="username">yujin</span>
-                <span id="email">jinjin17104@naver.com</span>
-            </div>
-        </div> 
-        <div class="profile_bottom">
-            <button id="profile_btn">계정 설정</button>
-        </div>
-        <div class="href_container">
-            <a href="#" id="logout">로그아웃</a>
-            <a href="#" id="withdraw">회원탈퇴</a>
-        </div>
-</div>
-
-</body>
+  </body>
 </html>
