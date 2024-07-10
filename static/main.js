@@ -1,3 +1,51 @@
+import { getCookie, getAccessTokenWithRefreshToken } from './tokenUtils.js';
+
+// 토큰 가져오기
+document.addEventListener("DOMContentLoaded", function () {
+    const accessToken = getCookie("accessToken");
+    const refreshToken = getCookie("refreshToken");
+
+    console.log(accessToken);
+    console.log(refreshToken);
+    /*
+    if (accessToken) {
+        // accessToken이 있는 경우, 서버에 사용자 정보 요청
+        funtion_name(accessToken)
+          .then((name) => {
+            //코드 작성
+          })
+          .catch((error) => {
+            console.error("User info error:", error);
+            // accessToken이 만료된 경우 refresh 토큰을 사용하여 새로운 accessToken을 가져옴
+            if (refreshToken) {
+              getAccessTokenWithRefreshToken(refreshToken)
+                .then((newAccessToken) => {
+                  // 새로운 accessToken으로 사용자 정보 요청
+                  funtion_name(newAccessToken)
+                    .then((name) => {
+                      //코드작성
+                    })
+                    .catch((error) => {
+                      console.error(
+                        "User info error after refreshing token:",
+                        error
+                      );
+                    });
+                })
+                .catch((error) => {
+                  console.error("Failed to refresh access token:", error);
+                });
+            }
+        });
+    } */
+        
+
+  
+});
+
+
+
+
 function changeImage(event, element) {
     event.preventDefault(); // 기본 링크 동작을 막음
 
@@ -56,6 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
         'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
     ];
+    
 
     function generateCalendar(month, year) {
         calendarBody.innerHTML = '';
