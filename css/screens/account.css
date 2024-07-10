@@ -118,4 +118,10 @@ body{
     border-color: #d3d3d3;
 }
 
-
+/* notification 관련 css */
+#confirm_new_password_notification {
+    display: none;
+}
+#password_notification {
+    display: none;
+}

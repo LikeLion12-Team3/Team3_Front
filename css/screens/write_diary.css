@@ -194,6 +194,7 @@
 #guideline{
    width: 150px;
    height: 19px;
+   cursor: pointer;
 }
 
 .title-container {

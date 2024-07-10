@@ -77,17 +77,18 @@
     justify-content: flex-end;
 }
 
-.idea_btn{
-        width: 108px;
-        margin-top: 30px;
-        margin-left: 20px;
-        padding: 15px;
-        background-color: #11E5B3;
-        color: black;
-        font-weight: bold;
-        font-size: 15px;
-        border-radius: 50px;
-        border: none;
+.idea_btn {
+    width: 108px;
+    margin-top: 30px;
+    margin-left: 20px;
+    padding: 15px;
+    background-color: #11E5B3;
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
 }
 
 .idea_btn:hover {
@@ -95,10 +96,10 @@
     color: white; 
 }
 
-/* disabled 상태일 때 스타일 */
 .idea_btn[disabled] {
     background-color: #ccc;
     color: #666;
+    cursor: default;
 }
 
 #idea_cancel_btn {
@@ -117,6 +118,7 @@
     background-color: #2a2a2a;
 }
 
+/* 이미지 관련 CSS */
 
 .image_preview_container {
     display: grid;
@@ -176,3 +178,55 @@
 .image-preview-container:hover .delete-button {
     display: flex; /* 호버 시 삭제 버튼 표시 */
 }
+
+/* 가이드 라인 관련 CSS */
+
+#guideline{
+    width: 150px;
+    height: 19px;
+    cursor: pointer;
+ }
+ 
+ .title-container {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+ }
+ .title-container span {
+     display: flex;
+     align-items: center;
+ }
+ .title-container img {
+     margin-left: 10px; /* 이미지와 텍스트 사이의 간격 조정 */
+ }
+ 
+ .image-wrapper {
+     position: relative;
+     display: inline-block;
+ }
+ 
+ .overlay {
+     position: absolute;
+     top: 100%; /* 이미지 아래에 위치 */
+     left: 40%;
+     transform: translateX(-50%);
+     background-color: rgba(0, 0, 0, 0.8);
+     color: white;
+     padding: 30px;
+     border-radius: 15px;
+     opacity: 0;
+     transition: opacity 0.3s ease;
+     width: 410px; /* 박스 너비 */
+     text-align: left; /* 텍스트 정렬 */
+     font-family: Arial, sans-serif;
+     font-size: 14px;
+     line-height: 1.5;
+     z-index: 10;
+ }
+ 
+ #guide_title{
+     font-size: 17px;
+     font-weight: bold;
+     text-align: center;
+ }
+ 
