@@ -39,6 +39,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (newPassword !== checkNewPassword) {
       document.getElementById("error_new_password").style.display = "block";
+      document.getElementById("error_new_password").textContent =
+        "*비밀번호가 일치하지 않습니다.";
       return;
     } else {
       document.getElementById("error_new_password").style.display = "none";
