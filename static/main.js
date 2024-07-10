@@ -1,16 +1,19 @@
 import { getCookie, getAccessTokenWithRefreshToken } from './tokenUtils.js';
 
+let API_SERVER_DOMAIN = "https://api.byuldajul.shop";
+
 // 토큰 가져오기
 document.addEventListener("DOMContentLoaded", function () {
+
     const accessToken = getCookie("accessToken");
     const refreshToken = getCookie("refreshToken");
 
     console.log(accessToken);
     console.log(refreshToken);
-    /*
+    
     if (accessToken) {
         // accessToken이 있는 경우, 서버에 사용자 정보 요청
-        funtion_name(accessToken)
+        getUser(accessToken)
           .then((name) => {
             //코드 작성
           })
@@ -21,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
               getAccessTokenWithRefreshToken(refreshToken)
                 .then((newAccessToken) => {
                   // 새로운 accessToken으로 사용자 정보 요청
-                  funtion_name(newAccessToken)
+                  getUser(newAccessToken)
                     .then((name) => {
                       //코드작성
                     })
@@ -37,11 +40,32 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             }
         });
-    } */
-        
-
+    }
   
 });
+
+//[API] User 정보 가져오기
+function getUser(accessToken) {
+    return fetch(API_SERVER_DOMAIN + "/users", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + accessToken,
+      },
+    })
+      .then((response) => {
+        //console.log(response)
+        if (!response.ok) {
+          throw new Error("Failed to refresh access token");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // console.log(data)
+        document.getElementById("username").textContent = data.nickname;
+      });
+  
+  }
 
 
 
