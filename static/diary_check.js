@@ -130,3 +130,92 @@ document.addEventListener("DOMContentLoaded", function () {
         markdownBox.innerHTML = parse(testText);
     });
 });
+
+
+var API_SERVER_DOMAIN = "https://api.byuldajul.shop";
+
+const boardId = 7; // 가져올 보드의 ID (예시로 1을 사용)
+
+// API 호출
+fetch(`https://api.byuldajul.shop/diary/${boardId}`, {
+    method: 'GET',
+    headers: {
+        'Authorization': 'Bearer ' + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNAbmF2ZXIuY29tIiwicm9sZSI6IiIsImlhdCI6MTcyMDYyOTgwMiwiZXhwIjoxNzIwNzI5ODAyfQ.nJc8gkclN_p_j0U-PxPJJjf1aENhdR5MQSzikdXPcHU"
+    }
+})
+.then(response => {
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    return response.json(); 
+})
+.then(data => {
+    // 성공적으로 데이터를 받아왔을 때 확인
+    console.log('보드 정보:', data);
+
+    // 필요한 데이터 추출
+    const title = data.title;
+    const createDate = formatDate(data.createAt); // 날짜 포맷팅 함수 사용
+    const mainText = data.mainText;
+    const template = data.template;
+    const impression = data.impression;
+    const remark = data.remark;
+    const plan = data.plan;
+
+    let hashtagsHTML = '';
+    if (data.hashtags && data.hashtags.length > 0) {
+        hashtagsHTML = data.hashtags.map(tag => `<span class="hashs">${tag}</span>`).join(' ');
+    }
+
+    // HTML 요소에 데이터 적용
+    const detailRecord = document.createElement('div');
+    detailRecord.classList.add('detailRecord');
+
+    detailRecord.innerHTML = `
+        <p id="recordTitle">${title}</p>
+        <p id="recordDate">${createDate}의 일기</p>
+        <div id="recordContentHeader">
+            ${template} 
+        </div>
+        <div class="markdownBox" id="recordContent">
+            ${mainText}<br>
+            ${impression}<br>
+            ${remark}<br>
+            ${plan}<br>
+        </div>
+        <div class="hashBox">
+            <div id="RecordHashList">
+                ${hashtagsHTML}
+            </div>
+            <div>
+                <button class="recordModify">수정</button>
+                <button class="recodeDelete">삭제</button>
+            </div>
+        </div>
+    `;
+
+
+    // 보드 정보가 들어갈 부모 요소
+    const recordParent = document.querySelector('.record');
+    // 부모 요소에 추가
+    recordParent.appendChild(detailRecord); // 원하는 부모 요소에 추가하셔도 됩니다.
+
+    const recordNumElement = document.getElementById('recordNum');
+    const currentCount = parseInt(recordNumElement.textContent) || 0;
+    recordNumElement.textContent = currentCount + 1;
+
+})
+.catch(error => {
+    console.error('보드 정보를 가져오는 중 에러 발생:', error);
+    // 에러 처리 로직
+});
+
+// 날짜 포맷 함수
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1; // getMonth()는 0부터 시작하므로 +1
+    const day = date.getDate();
+    return `${year}년 ${month}월 ${day}일`;
+}
+
