@@ -391,8 +391,7 @@ function dateDiaryLoad(accessToken, date) {
                         ${combinedHash}
                     </div>
                     <div>
-                        <button class="recordModify"><span class="boardId">${data[i].boardId}</span>수정</button>
-                        <button class="recodeDelete">삭제</button>
+                        <button class="recordDetail">더보기</button>
                     </div>
                 </div>
             `;

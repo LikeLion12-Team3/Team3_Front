@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('guideline').addEventListener('click', function() {
+    document.getElementById('guideline-wrapper').addEventListener('click', function() {
         var overlay = this.nextElementSibling;
         overlay.style.opacity = (overlay.style.opacity === '1') ? '0' : '1'; // 토글
     });
