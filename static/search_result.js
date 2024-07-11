@@ -69,7 +69,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
             const ideaTabTitle = document.createElement('span');
             //글자수 제한
-            //글자수 제한
             const maxLength = 30;
             const trimmedTitleText = data[i].title.length > maxLength ? data[i].title.substring(0, maxLength) + '...' : data[i].title;  
 

@@ -10,6 +10,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function updateRecentSearches() {
+        //API 연동
+        //태그 개수 API 연동
+        console.log(searches, searches[2]);
+
+        // 쿠키에서 accessToken을 가져오는 함수
+        function getCookie(name) {
+            let value = `; ${document.cookie}`;
+            let parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(";").shift();
+        }
+        // accessToken 가져오기
+        const accessToken = getCookie("accessToken");
+
+
         recentSearches.innerHTML = '';
         searches.forEach(search => {
             const searchWrapper = document.createElement('div');
@@ -26,9 +40,32 @@ document.addEventListener('DOMContentLoaded', () => {
             const searchStr = document.createElement('span');
             searchStr.textContent = "개 태그됨"; // 추후에 API 연동시 이 부분 수정
             searchStr.classList.add('search-str'); // 클래스 추가
-    
-        
-    
+
+            //API 연결
+            const url = `https://api.byuldajul.shop/diary?query=${search}`;
+            fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json(); 
+            })
+            .then(data => {
+                // 성공적으로 데이터를 받아왔을 때 확인
+                console.log(search, data.length);
+                searchNum.textContent = data.length
+
+            })
+            .catch(error => {
+                console.error('보드 정보를 가져오는 중 에러 발생:', error);
+                // 에러 처리 로직
+            });
+
             searchWrapper.appendChild(searchItem);
             searchWrapper.appendChild(searchNum);
             searchWrapper.appendChild(searchStr);
@@ -63,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // searchInput.value = '';
         searchInput.focus();
     });
+
 
 
 
@@ -125,6 +163,11 @@ document.addEventListener('DOMContentLoaded', () => {
     recentModal.style.display = 'block';
 
     updateRecentSearches();
+
+
+    //태그 개수 API 연동
+    console.log(searches, searches[2]);
+
 
 });
 
