@@ -49,19 +49,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     day: 'numeric'
                 });
 
-                // title 길이 제한 및 생략 처리
-                const maxLength = 8; // 최대 글자 수
-                const trimmedTitle = title.length > maxLength ? title.substring(0, maxLength) + '...' : title;
+                // // title 길이 제한 및 생략 처리
+                // const maxLength = 8; // 최대 글자 수
+                // const trimmedTitle = title.length > maxLength ? title.substring(0, maxLength) + '...' : title;
 
-                // mainText 길이 제한 및 생략 처리
-                const maxLengthMainText = 22; // 최대 글자 수
-                const trimmedMainText = mainText.length > maxLengthMainText ? mainText.substring(0, maxLengthMainText) + '...' : mainText;
+                // // mainText 길이 제한 및 생략 처리
+                // const maxLengthMainText = 22; // 최대 글자 수
+                // const trimmedMainText = mainText.length > maxLengthMainText ? mainText.substring(0, maxLengthMainText) + '...' : mainText;
                 ideaTabsHTML += `
                     <div class="idea_tab">
                         <div class="idea_content_container">
-                            <span id="idea_tab_title">${trimmedTitle}</span>
+                            <span id="idea_tab_title">${title}</span>
                             <span id="idea_tab_date">${formattedDate}</span>
-                            <span id="idea_tab_content">${trimmedMainText}</span>
+                            <span id="idea_tab_content">${mainText}</span>
                         </div>
                         <div class="idea_tab_bottom">
                             <button class="idea_tab_btn" data-idea-id="${id}">></button>

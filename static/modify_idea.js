@@ -154,11 +154,13 @@ document.addEventListener("DOMContentLoaded", function() {
             },
             body: JSON.stringify({
                 title: newTitle,
-                maintext: newMaintext,
+                mainText: newMaintext,
             }),
         })
         .then(() => {
+            console.log(newMaintext);
             console.log("변경되었습니다.");
+            window.location.href = `detail_idea.html?id=${ideaId}`;
         })
         .catch((error) => {
             console.error("내용 변경 실패", error);
