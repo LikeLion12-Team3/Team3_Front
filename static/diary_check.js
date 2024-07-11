@@ -3,6 +3,8 @@ import { getCookie, getAccessTokenWithRefreshToken } from './tokenUtils.js';
 
 let API_SERVER_DOMAIN = "https://api.byuldajul.shop";
 
+
+
 //[API] User 정보 가져오기
 function getUser(accessToken) {
     return fetch(API_SERVER_DOMAIN + "/users", {
@@ -220,7 +222,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         })
         .catch((error) => {
-            console.error("Error:", error); 
+            let dayIndex = [];
+            let zeroArray = Array.from({ length: 31 }, () => 0);
+            generateCalendar(currentMonth, currentYear, dayIndex, zeroArray);
         });
 
     });
@@ -236,6 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
         //잔디 API 연결
         commits(accessToken, `${currentYear}`, `${currentMonth+1}`)
         .then((data) => {
+            console.log("여기");
             let dataArray = [];
             dataArray = dataArray.concat(data);
             let zeroArray = Array.from({ length: 31 }, () => 0);
@@ -256,7 +261,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         })
         .catch((error) => {
-            console.error("Error:", error); 
+            let dayIndex = [];
+            let zeroArray = Array.from({ length: 31 }, () => 0);
+            generateCalendar(currentMonth, currentYear, dayIndex, zeroArray);
         });
 
     });
@@ -284,7 +291,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     })
     .catch((error) => {
-        console.error("Error:", error); 
+        let dayIndex = [];
+            let zeroArray = Array.from({ length: 31 }, () => 0);
+            generateCalendar(currentMonth, currentYear, dayIndex, zeroArray);
     });
 
     updateDiaryDate(currentYear, currentMonth, new Date().getDate());
@@ -338,7 +347,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    const boardId = 14; // 가져올 보드의 ID (예시로 7을 사용)
+    const boardId = 38; // 가져올 보드의 ID (예시로 7을 사용)
 
     // 쿠키에서 accessToken을 가져오는 함수
     function getCookie(name) {
@@ -449,5 +458,3 @@ document.addEventListener("DOMContentLoaded", function () {
         return md; // Replace with actual parsed HTML
     }
 });
-
-
