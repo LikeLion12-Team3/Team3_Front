@@ -177,14 +177,15 @@ document.addEventListener("DOMContentLoaded", function() {
     //취소버튼
     const cancelBtn = document.getElementById("diary_cancel_btn");
     cancelBtn.addEventListener("click", function() {
-        window.location.href = 'view_diary.html';
+        const url = `view_diary.html?diaryId=${encodeURIComponent(boardId)}`;
+        // 페이지 이동
+        window.location.href = url;
     });
 
 
-    const saveBtn = document.getElementById("diary_save_btn");
-
     //저장버튼 API 연동
     saveBtn.addEventListener("click", function () {
+        const saveBtn = document.getElementById("diary_save_btn");
         // 해시태그를 '#'으로 구분하여 배열로 변환
         var hashtagContent = document.getElementById('hashtag_content').value;
         var diaryHashtags = hashtagContent.split('#')
