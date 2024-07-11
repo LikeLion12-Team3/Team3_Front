@@ -226,7 +226,7 @@
     align-items: center;
 }
 
-#RecordHashList .hashs{
+#RecordHashList {
     color: #11E5B3;
     font-size: 16px;
     font-weight: 400;
