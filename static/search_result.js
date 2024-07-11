@@ -68,8 +68,13 @@ document.addEventListener("DOMContentLoaded", function() {
             ideaContentContainer.classList.add('idea_content_container');
 
             const ideaTabTitle = document.createElement('span');
+            //글자수 제한
+            //글자수 제한
+            const maxLength = 30;
+            const trimmedTitleText = data[i].title.length > maxLength ? data[i].title.substring(0, maxLength) + '...' : data[i].title;  
+
             ideaTabTitle.id = 'idea_tab_title';
-            ideaTabTitle.textContent = `${data[i].title}`;
+            ideaTabTitle.textContent = `${trimmedTitleText}`;
 
             const ideaTabDate = document.createElement('span');
             ideaTabDate.id = 'idea_tab_date';
@@ -77,7 +82,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
             const ideaTabContent = document.createElement('span');
             ideaTabContent.id = 'idea_tab_content';
-            ideaTabContent.textContent = `${data[i].mainText}`;
+            //글자수 제한
+            const trimmedMainText = data[i].mainText.length > maxLength ? data[i].mainText.substring(0, maxLength) + '...' : data[i].mainText;
+            ideaTabContent.textContent = `${trimmedMainText}`;
 
             ideaContentContainer.appendChild(ideaTabTitle);
             ideaContentContainer.appendChild(ideaTabDate);
