@@ -107,3 +107,48 @@ document.addEventListener('DOMContentLoaded', function() {
         window.history.back();
     });
 });
+
+var API_SERVER_DOMAIN = "https://api.byuldajul.shop"; //URL 주소
+
+document.addEventListener('DOMContentLoaded', function() {
+    // 쿠키에서 accessToken을 가져오는 함수
+    function getCookie(name) {
+        let value = `; ${document.cookie}`;
+        let parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(";").shift();
+    }
+
+    // accessToken 가져오기
+    const accessToken = getCookie("accessToken");
+
+    const saveButton = document.getElementById("idea_save_btn");
+    if(saveButton) {
+        saveButton.addEventListener('click', function() {
+            var idea = {
+                title: document.querySelector('.write_idea_title input').value,
+                mainText: document.getElementById('idea_content1').value
+            };
+
+            fetch(API_SERVER_DOMAIN + '/idea', {
+                method: 'POST',
+                headers:{
+                    'Content-Type' : 'application/json',
+                    'Authorization' : 'Bearer ' + accessToken
+                },
+                body: JSON.stringify(idea)
+            })
+            .then(response => {
+                if(response.ok) {
+                    window.location.replace("idea.html");
+                } else {
+                    throw new Error('네트워크 에러:  ' + response.statusText);
+                }
+            })
+            .catch(error => {
+                console.error('에러: 아이디어 저장 실패', error);
+                alert('아이이더가 날아갔습니다.');
+            });
+        });
+    }
+
+});
