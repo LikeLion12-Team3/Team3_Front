@@ -391,7 +391,7 @@ function dateDiaryLoad(accessToken, date) {
                         ${combinedHash}
                     </div>
                     <div>
-                        <button class="recordModify">수정</button>
+                        <button class="recordModify"><span class="boardId">${data[i].boardId}</span>수정</button>
                         <button class="recodeDelete">삭제</button>
                     </div>
                 </div>
@@ -412,8 +412,17 @@ function dateDiaryLoad(accessToken, date) {
         // 일기 수정화면으로 이동
         const modifyBtn = document.querySelectorAll(".recordModify");
         modifyBtn.forEach(function(btn) {
+            //span
+            let boardIdSpan = btn.querySelector('.boardId');
+            let boardId = boardIdSpan.textContent;
+         
+
             btn.addEventListener("click", function() {
-                window.location.href = 'modify_diary.html';
+                //window.location.href = 'modify_diary.html';
+
+                const url = `modify_diary.html?boardId=${encodeURIComponent(boardId)}`;
+                // 페이지 이동
+                window.location.href = url;
                 
             });
         });

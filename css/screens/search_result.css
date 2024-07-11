@@ -62,3 +62,7 @@ body {
     padding-left: 230px; /* 여백 추가 */
     padding-right: 160px;
 }
+
+.boardId {
+    display: none;
+}
