@@ -160,6 +160,13 @@ td:hover {
     padding-right: 15px;
     padding-top: 12px;
     padding-bottom: 18px;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: scroll;
+    word-break: normal;
+    overflow-wrap: normal;
+
+    -ms-overflow-style: none;
 }
 .today .todayContainer li {
     color: #FFFFFF;
@@ -167,7 +174,7 @@ td:hover {
     font-weight: 300;
     text-align: left;
     padding-top: 3px;
-    
+    list-style: none;
 }
 /* 오늘의 해시태그 */
 .hashtag {
