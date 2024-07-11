@@ -1,9 +1,9 @@
-document.addEventListener("DOMContentLoaded", function() {
-    var modifybutton = document.querySelector('.ideaModify');
-    modifybutton.addEventListener("click", function() {
-        window.location.href = 'modify_idea.html';
-    });
-});
+// document.addEventListener("DOMContentLoaded", function() {
+//     var modifybutton = document.querySelector('.ideaModify');
+//     modifybutton.addEventListener("click", function() {
+//         window.location.href = 'modify_idea.html';
+//     });
+// });
 
 
 //마크다운
@@ -25,3 +25,87 @@ document.addEventListener("DOMContentLoaded", function () {
         markdownBox.innerHTML = parse(testText);
     });
 });
+
+let API_SERVER_DOMAIN = "https://api.byuldajul.shop"
+
+document.addEventListener("DOMContentLoaded", function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const ideaId = urlParams.get('id');
+
+    // 쿠키에서 accessToken을 가져오는 함수
+    function getCookie(name) {
+        let value = `; ${document.cookie}`;
+        let parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(";").shift();
+    }
+
+    // accessToken 가져오기
+    const accessToken = getCookie("accessToken");
+
+    if(ideaId) {
+        console.log("현재 보고 있는 아이디어 ID: ", ideaId);
+        //아이디어 상세 정보 가져오기 (GET)
+        fetch(`${API_SERVER_DOMAIN}/idea/${ideaId}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('아이디어 상세 정보:', data);
+            const ideaTitleElement = document.getElementById('ideaTitle');
+            const ideaDateElement = document.getElementById('ideaDate');
+            const ideaContentElement = document.getElementById('ideaContent');
+        
+            // 데이터를 페이지에 표시
+            ideaTitleElement.textContent = data.title;
+            const formattedDate = new Date(data.createdAt).toLocaleDateString('ko-KR', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            ideaDateElement.textContent = formattedDate;
+            ideaContentElement.textContent = data.mainText;
+        
+            // 이미지 박스에 이미지 추가 (여기서는 이미지 주소가 고정되어 있지 않아 예시로 추가하지 않음)
+            const ideaImageBox = document.getElementById('ideaImageBox');
+            // data.images를 이용하여 각 이미지를 추가하는 코드 필요
+        
+            // 활동 헤더 추가
+            const ideaContentHeader = document.getElementById('ideaContentHeader');
+            ideaContentHeader.textContent = data.activityHeader;
+        
+            // Markdown 형식의 내용 추가
+            const ideaMarkdownBox = document.getElementById('ideaContent');
+            ideaMarkdownBox.innerHTML = parseMd(data.markdownContent); // parseMd 함수를 사용하여 Markdown을 HTML로 변환
+        
+            // 수정 버튼 클릭 시 동작
+            const modifyButton = document.querySelector('.ideaModify');
+            modifyButton.addEventListener('click', function() {
+                // 수정 페이지로 이동하는 코드
+                window.location.href = `edit_idea.html?id=${data.id}`;
+            });
+        
+            // 삭제 버튼 클릭 시 동작
+            const deleteButton = document.querySelector('.ideaDelete');
+            deleteButton.addEventListener('click', function() {
+                // 삭제 요청을 보내는 코드
+                const confirmDelete = confirm('정말로 삭제하시겠습니까?');
+                if (confirmDelete) {
+                    deleteIdea(data.id); // 삭제 함수 호출
+                }
+            });
+        
+            // 예시로 추가된 코드입니다. 실제 데이터 구조나 페이지에 따라 수정이 필요할 수 있습니다.
+        })
+        .catch(error => {
+            console.error('아이디어 상세 정보 불러오기 실패:', error);
+        });
+    }
+})
