@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((response) => response.json())
     .then((data) => {
       document.getElementById("username").textContent = data.nickname;
-      document.getElementById("email").textContent = data.eamil;
+      document.getElementById("email").textContent = data.email;
     })
     .catch((error) => {
       console.error("Error fetching user data:", error);
