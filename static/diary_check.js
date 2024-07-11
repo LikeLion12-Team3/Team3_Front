@@ -1,4 +1,111 @@
+//API 연동
+import { getCookie, getAccessTokenWithRefreshToken } from './tokenUtils.js';
+
+let API_SERVER_DOMAIN = "https://api.byuldajul.shop";
+
+
+
+//[API] User 정보 가져오기
+function getUser(accessToken) {
+    return fetch(API_SERVER_DOMAIN + "/users", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + accessToken,
+      },
+    })
+      .then((response) => {
+        //console.log(response)
+        if (!response.ok) {
+          throw new Error("Failed to refresh access token");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // console.log(data)
+    });
+}
+
+
+//캘린더에 잔디 표시
+function commits(accessToken, year, month) {
+    const url = `${API_SERVER_DOMAIN}/commits?year=${year}&month=${month}`;
+
+    return fetch(url, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + accessToken,
+        },
+    })
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error("Failed to fetch commits");
+        }
+        return response.json();
+    })
+    .then((data) => {
+        return data;
+    });
+}
+
+
 document.addEventListener('DOMContentLoaded', function() {
+    //토큰 가져오기
+    const accessToken = getCookie("accessToken");
+    const refreshToken = getCookie("refreshToken");
+
+    console.log(accessToken);
+    console.log(refreshToken);
+    
+    if (accessToken) {
+        // accessToken이 있는 경우, 서버에 사용자 정보 요청
+        getUser(accessToken)
+          .then((name) => {
+            //코드 작성
+          })
+          .catch((error) => {
+            console.error("User info error:", error);
+            // accessToken이 만료된 경우 refresh 토큰을 사용하여 새로운 accessToken을 가져옴
+            if (refreshToken) {
+              getAccessTokenWithRefreshToken(refreshToken)
+                .then((newAccessToken) => {
+                  // 새로운 accessToken으로 사용자 정보 요청
+                  getUser(newAccessToken)
+                    .then((name) => {
+                      //코드작성
+                      accessToken = newAccessToken;
+                    })
+                    .catch((error) => {
+                      console.error(
+                        "User info error after refreshing token:",
+                        error
+                      );
+                    });
+                })
+                .catch((error) => {
+                  console.error("Failed to refresh access token:", error);
+                });
+            }
+        });
+    }
+
+
+    //잔디를 위한 commits API 호출
+    // commits(accessToken, "2024", '07')
+    // .then((data) => {
+    //     let dataArray = [];
+    //     dataArray = dataArray.concat(data);
+        
+    //     for (var i=0; i<dataArray.length; i++) {
+    //         console.log(dataArray[i]["day"]);
+    //         console.log(dataArray[i]["commitCount"]);
+    //     }
+    // })
+    // .catch((error) => {
+    //     console.error("Error:", error); 
+    // });
+
 
     //검색 화면으로 이동
     const searchContainer = document.querySelector('.search-container');
@@ -22,8 +129,12 @@ document.addEventListener('DOMContentLoaded', function() {
         'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
         'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
     ];
-
-    function generateCalendar(month, year) {
+    
+    function generateCalendar(month, year, index, count) {
+        //배열로 변경
+        let arr = Object.values(index);
+        let countArr = Object.values(count);
+        console.log(arr);
         calendarBody.innerHTML = '';
         const firstDay = new Date(year, month, 1).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -47,6 +158,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else {
                     const currentDate = date;
                     cell.textContent = currentDate;
+                    // 잔디 색깔 변경
+                    //console.log(cell);
+                    if (arr.includes(cell.textContent) && countArr[parseInt(cell.textContent)] === 1) {
+                        cell.style.backgroundColor = '#11E5B333';
+                    } else if (arr.includes(cell.textContent) && countArr[parseInt(cell.textContent)] === 2) {
+                        cell.style.backgroundColor = '#11E5B366';
+                    } else if (arr.includes(cell.textContent) && countArr[parseInt(cell.textContent)] === 3) {
+                        cell.style.backgroundColor = '#11E5B399';
+                    } else if (arr.includes(cell.textContent) && countArr[parseInt(cell.textContent)] === 4) {
+                        cell.style.backgroundColor = '#11E5B3CC';
+                    } else if (arr.includes(cell.textContent) && countArr[parseInt(cell.textContent)] >= 5) {
+                        cell.style.backgroundColor = '#11E5B3';
+                    }
                     cell.addEventListener('click', () => {
                         updateDiaryDate(year, month, currentDate);
                     });
@@ -73,7 +197,36 @@ document.addEventListener('DOMContentLoaded', function() {
             currentMonth = 11;
             currentYear--;
         }
-        generateCalendar(currentMonth, currentYear);
+        //generateCalendar(currentMonth, currentYear, [], []);
+
+        //잔디 API 연결
+        commits(accessToken, `${currentYear}`, `${currentMonth+1}`)
+        .then((data) => {
+            let dataArray = [];
+            dataArray = dataArray.concat(data);
+            let zeroArray = Array.from({ length: 31 }, () => 0);
+            console.log(zeroArray);
+            let dayIndex = [];
+            
+            for (var i=0; i<dataArray.length; i++) {
+                // console.log(dataArray[i]["day"]);
+                // console.log(dataArray[i]["commitCount"]);
+                //커밋이 되어있는 날짜를 전부 dayIndex에 추가
+                dayIndex.push(`${dataArray[i]["day"]}`);
+                //count 정도를 저장
+                zeroArray[dataArray[i]["day"]] = dataArray[i]["commitCount"];
+            }
+            // console.log(dayIndex);
+            // console.log(zeroArray);
+            generateCalendar(currentMonth, currentYear, dayIndex, zeroArray);
+
+        })
+        .catch((error) => {
+            let dayIndex = [];
+            let zeroArray = Array.from({ length: 31 }, () => 0);
+            generateCalendar(currentMonth, currentYear, dayIndex, zeroArray);
+        });
+
     });
 
     nextMonth.addEventListener('click', function() {
@@ -82,11 +235,69 @@ document.addEventListener('DOMContentLoaded', function() {
             currentMonth = 0;
             currentYear++;
         }
-        generateCalendar(currentMonth, currentYear);
+        // generateCalendar(currentMonth, currentYear);
+
+        //잔디 API 연결
+        commits(accessToken, `${currentYear}`, `${currentMonth+1}`)
+        .then((data) => {
+            console.log("여기");
+            let dataArray = [];
+            dataArray = dataArray.concat(data);
+            let zeroArray = Array.from({ length: 31 }, () => 0);
+            console.log(zeroArray);
+            let dayIndex = [];
+            
+            for (var i=0; i<dataArray.length; i++) {
+                console.log(dataArray[i]["day"]);
+                console.log(dataArray[i]["commitCount"]);
+                //커밋이 되어있는 날짜를 전부 dayIndex에 추가
+                dayIndex.push(`${dataArray[i]["day"]}`);
+                //count 정도를 저장
+                zeroArray[dataArray[i]["day"]] = dataArray[i]["commitCount"];
+            }
+            console.log(dayIndex);
+            console.log(zeroArray);
+            generateCalendar(currentMonth, currentYear, dayIndex, zeroArray);
+
+        })
+        .catch((error) => {
+            let dayIndex = [];
+            let zeroArray = Array.from({ length: 31 }, () => 0);
+            generateCalendar(currentMonth, currentYear, dayIndex, zeroArray);
+        });
+
     });
 
-    generateCalendar(currentMonth, currentYear);
+    //잔디 API 연결
+    commits(accessToken, `${currentYear}`, `${currentMonth+1}`)
+    .then((data) => {
+        let dataArray = [];
+        dataArray = dataArray.concat(data);
+        let zeroArray = Array.from({ length: 31 }, () => 0);
+        console.log(zeroArray);
+        let dayIndex = [];
+        
+        for (var i=0; i<dataArray.length; i++) {
+            console.log(dataArray[i]["day"]);
+            console.log(dataArray[i]["commitCount"]);
+            //커밋이 되어있는 날짜를 전부 dayIndex에 추가
+            dayIndex.push(`${dataArray[i]["day"]}`);
+            //count 정도를 저장
+            zeroArray[dataArray[i]["day"]] = dataArray[i]["commitCount"];
+        }
+        console.log(dayIndex);
+        console.log(zeroArray);
+        generateCalendar(currentMonth, currentYear, dayIndex, zeroArray);
+
+    })
+    .catch((error) => {
+        let dayIndex = [];
+            let zeroArray = Array.from({ length: 31 }, () => 0);
+            generateCalendar(currentMonth, currentYear, dayIndex, zeroArray);
+    });
+
     updateDiaryDate(currentYear, currentMonth, new Date().getDate());
+
 
     // 일기 수정화면으로 이동
     const modifyBtn = document.querySelectorAll(".recordModify");
@@ -95,6 +306,7 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.href = 'modify_diary.html';
         });
     });
+
 });
 
 document.addEventListener('DOMContentLoaded', (event) => {
@@ -110,6 +322,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     });
 });
+
 
 // 마크다운
 document.addEventListener("DOMContentLoaded", function () {
@@ -129,4 +342,119 @@ document.addEventListener("DOMContentLoaded", function () {
     Array.from(markdownBoxElements).forEach(markdownBox => {
         markdownBox.innerHTML = parse(testText);
     });
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const boardId = 38; // 가져올 보드의 ID (예시로 7을 사용)
+
+    // 쿠키에서 accessToken을 가져오는 함수
+    function getCookie(name) {
+        let value = `; ${document.cookie}`;
+        let parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(";").shift();
+    }
+
+    // accessToken 가져오기
+    const accessToken = getCookie("accessToken");
+    
+
+    // API 호출
+    fetch(`https://api.byuldajul.shop/diary/${boardId}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json(); 
+    })
+    .then(data => {
+        // 성공적으로 데이터를 받아왔을 때 확인
+        console.log('보드 정보:', data);
+
+        // 필요한 데이터 추출
+        const title = data.title;
+        const createDate = formatDate(data.createdAt); // 날짜 포맷팅 함수 사용
+        const mainText = data.mainText;
+        const template = data.template;
+        const impression = data.impression;
+        const remark = data.remark;
+        const plan = data.plan;
+
+        // 해시태그가 올바르게 받아졌는지 확인
+        console.log('Hashtags:', data.hashtagNames);
+
+        let hashtagsHTML = '';
+        if (Array.isArray(data.hashtagNames) && data.hashtagNames.length > 0) {
+            hashtagsHTML = data.hashtagNames.map(tag => `<span class="hashs">${tag}</span>`).join(' ');
+        }
+
+        // HTML 요소에 데이터 적용
+        const detailRecord = document.createElement('div');
+        detailRecord.classList.add('detailRecord');
+
+        const combinedText = `
+            ${mainText}\n
+            ${impression}\n
+            ${remark}\n
+            ${plan}\n
+        `;
+
+        // Use parseMd function to convert the combined Markdown text to HTML
+        const parsedContent = parseMd(combinedText);
+
+        detailRecord.innerHTML = `
+            <p id="recordTitle">${title}</p>
+            <p id="recordDate">${createDate}의 일기</p>
+            <div id="recordContentHeader">
+                ${template}
+            </div>
+            <div class="markdownBox" id="recordContent">
+                ${parsedContent}
+            </div>
+            <div class="hashBox">
+                <div id="RecordHashList">
+                    ${hashtagsHTML}
+                </div>
+                <div>
+                    <button class="recordModify">수정</button>
+                    <button class="recodeDelete">삭제</button>
+                </div>
+            </div>
+        `;
+
+        // 보드 정보가 들어갈 부모 요소
+        const recordParent = document.querySelector('.record');
+        // 부모 요소에 추가
+        recordParent.appendChild(detailRecord);
+
+        const recordNumElement = document.getElementById('recordNum');
+        const currentCount = parseInt(recordNumElement.textContent) || 0;
+        recordNumElement.textContent = currentCount + 1;
+
+    })
+    .catch(error => {
+        console.error('보드 정보를 가져오는 중 에러 발생:', error);
+        // 에러 처리 로직
+    });
+
+    // 날짜 포맷 함수
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1; // getMonth()는 0부터 시작하므로 +1
+        const day = date.getDate();
+        return `${year}년 ${month}월 ${day}일`;
+    }
+
+    // Assuming parseMd is defined somewhere else to convert Markdown to HTML
+    function parseMd(md) {
+        // Add your Markdown parsing logic here
+        return md; // Replace with actual parsed HTML
+    }
 });

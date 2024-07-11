@@ -1,3 +1,75 @@
+import { getCookie, getAccessTokenWithRefreshToken } from './tokenUtils.js';
+
+let API_SERVER_DOMAIN = "https://api.byuldajul.shop";
+
+// 토큰 가져오기
+document.addEventListener("DOMContentLoaded", function () {
+
+    const accessToken = getCookie("accessToken");
+    const refreshToken = getCookie("refreshToken");
+
+    console.log(accessToken);
+    console.log(refreshToken);
+    
+    if (accessToken) {
+        // accessToken이 있는 경우, 서버에 사용자 정보 요청
+        getUser(accessToken)
+          .then((name) => {
+            //코드 작성
+          })
+          .catch((error) => {
+            console.error("User info error:", error);
+            // accessToken이 만료된 경우 refresh 토큰을 사용하여 새로운 accessToken을 가져옴
+            if (refreshToken) {
+              getAccessTokenWithRefreshToken(refreshToken)
+                .then((newAccessToken) => {
+                  // 새로운 accessToken으로 사용자 정보 요청
+                  getUser(newAccessToken)
+                    .then((name) => {
+                      //코드작성
+                    })
+                    .catch((error) => {
+                      console.error(
+                        "User info error after refreshing token:",
+                        error
+                      );
+                    });
+                })
+                .catch((error) => {
+                  console.error("Failed to refresh access token:", error);
+                });
+            }
+        });
+    }
+  
+});
+
+//[API] User 정보 가져오기
+function getUser(accessToken) {
+    return fetch(API_SERVER_DOMAIN + "/users", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + accessToken,
+      },
+    })
+      .then((response) => {
+        //console.log(response)
+        if (!response.ok) {
+          throw new Error("Failed to refresh access token");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // console.log(data)
+        document.getElementById("username").textContent = data.nickname;
+      });
+  
+  }
+
+
+
+
 function changeImage(event, element) {
     event.preventDefault(); // 기본 링크 동작을 막음
 
@@ -56,6 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
         'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
     ];
+    
 
     function generateCalendar(month, year) {
         calendarBody.innerHTML = '';

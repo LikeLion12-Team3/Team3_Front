@@ -94,6 +94,7 @@ body {
 }
 
 #idea_tab_content{
+    text-align: left;
     font-size: 16px;
     color: white; 
 }

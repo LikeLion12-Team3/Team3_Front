@@ -107,3 +107,54 @@ document.addEventListener('DOMContentLoaded', function() {
         window.history.back();
     });
 });
+
+var API_SERVER_DOMAIN = "https://api.byuldajul.shop"; // URL $1
+
+document.addEventListener('DOMContentLoaded', function() {
+    // 쿠키에서 accessToken을 가져오는 함수
+    function getCookie(name) {
+        let value = '; ' + document.cookie;
+        let parts = value.split('; ' + name + '=');
+        if (parts.length === 2) return parts.pop().split(";").shift();
+    }
+
+    // accessToken 가져오기
+    const accessToken = getCookie("accessToken");
+    console.log('AccessToken:', accessToken); // accessToken 로그 출력
+
+    const saveButton = document.getElementById("idea_save_btn");
+    if (saveButton) {
+        saveButton.addEventListener('click', function() {
+            var idea = {
+                title: document.querySelector('.write_idea_title input').value,
+                mainText: document.getElementById('idea_content1').value
+            };
+
+            console.log('아이디어 저장 시도:', idea); // 저장 시도 로그
+
+            fetch(API_SERVER_DOMAIN + '/idea', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + accessToken
+                },
+                body: JSON.stringify(idea)
+            })
+            .then(response => {
+                console.log('서버 응답:', response); // 서버 응답 로그
+
+                if (response.ok) {
+                    console.log("accessToken")
+                    console.log('아이디어 저장 성공'); // 저장 성공 로그
+                    window.location.replace("idea.html");
+                } else {
+                    throw new Error('네트워크 에러: ' + response.statusText);
+                }
+            })
+            .catch(error => {
+                console.error('에러: 아이디어 저장 실패', error); // 에러 로그
+                alert('아이디어가 날아갔습니다.');
+            });
+        });
+    }
+});

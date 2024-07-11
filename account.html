@@ -1,42 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <script src="./static/account.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./css/style.css" />
+
     <title>별다줄</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="account_box">
-        <form id="signup_form" action="#" method="post">
-            <div class="account_inputcontainer">
-                <span id="account_title">회원가입</span>
-                <div class="account_inputbox">
-                    <span>이름</span>
-                    <input class="name_input" type="text" name="name">
-                </div>
-                <div class="account_inputbox">
-                    <span>이메일</span>
-                    <input class="email_input" type="text" name="email">
-                    <span class="notification" id="password_notification">*해당 이메일의 계정이 이미 존재합니다.</span>
-                </div>
-                <div class="account_inputbox">
-                    <span>비밀번호</span>
-                    <input id="new_password" class="password_input" type="password" name="new_password">
-                </div>
-                <div class="account_inputbox">
-                    <span>비밀번호 확인</span>
-                    <input id="confirm_password" class="password_input" type="password" name="cofirm_password">
-                    <span class="notification" id="confirm_new_password_notification">*비밀번호가 일치하지 않습니다.</span>
-                </div>
-            </div>
-            <div class="account_btn_container">
-                <button class="account_back_btn" type="button">뒤로가기</button>
-                <button class="account_btn" type="submit">계정 생성</button>
-            </div>
-        </form>
+      <form id="signup_form" action="#" method="post">
+        <div class="account_inputcontainer">
+          <span id="account_title">회원가입</span>
+          <div class="account_inputbox">
+            <span>이름</span>
+            <input class="name_input" type="text" name="name" />
+          </div>
+          <div class="account_inputbox">
+            <span>이메일</span>
+            <input class="email_input" type="text" name="email" />
+            <span class="notification" id="password_notification"
+              >*해당 이메일의 계정이 이미 존재합니다.</span
+            >
+          </div>
+          <div class="account_inputbox">
+            <span>비밀번호</span>
+            <input
+              id="new_password"
+              class="password_input"
+              type="password"
+              name="new_password"
+            />
+          </div>
+          <div class="account_inputbox">
+            <span>비밀번호 확인</span>
+            <input
+              id="confirm_password"
+              class="password_input"
+              type="password"
+              name="cofirm_password"
+            />
+            <span class="notification" id="confirm_new_password_notification"
+              >*비밀번호가 일치하지 않습니다.</span
+            >
+          </div>
+        </div>
+        <div class="account_btn_container">
+          <button class="account_back_btn" type="button">뒤로가기</button>
+          <button class="account_btn" type="button" id="signup_button">
+            계정 생성
+          </button>
+        </div>
+      </form>
     </div>
-</body>
+  </body>
+  <script type="module" src="./static/account.js"></script>
 </html>

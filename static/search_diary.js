@@ -36,7 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // searchWrapper에 클릭 이벤트 추가
             searchWrapper.addEventListener('click', () => {
                 searchInput.value = search; // 검색어 입력 (예: 검색어를 클릭한 경우)
-                window.location.href = 'search_result.html'; // 클릭 시 페이지 이동
+                saveInput(search);
+                //window.location.href = 'search_result.html'; // 클릭 시 페이지 이동
                 recentModal.style.display = 'none'; // 모달 닫기
             });
             recentSearches.appendChild(searchWrapper);
@@ -78,7 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             }
             searchInput.value = searchInput.value;
-            window.location.href = 'search_result.html';
+            saveInput(searchInput.value);
+            //window.location.href = 'search_result.html';
             recentModal.style.display = 'none';
             // alert(`검색: ${searchTerm}`); // 검색 동작을 시뮬레이션하는 알림
         }
@@ -109,8 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
             }
+            saveInput(searchInput.value);
             //alert(`검색: ${searchTerm}`); // 검색 동작을 시뮬레이션하는 알림
-            window.location.href = 'search_result.html';
+            //window.location.href = 'search_result.html';
             recentModal.style.display = 'none';
             //searchInput.value = '#';
             document.getElementById('search-input2').blur();
@@ -123,5 +126,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateRecentSearches();
 
-    
 });
+
+// Input 값을 저장하는 함수
+function saveInput(inputValue) {
+    console.log(inputValue);
+    localStorage.setItem("diaryInput", inputValue); // Local Storage에 저장
+    window.location.href = 'search_result.html'
+}
+
