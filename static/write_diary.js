@@ -146,6 +146,17 @@ document.addEventListener('DOMContentLoaded', function() {
 var API_SERVER_DOMAIN = "https://api.byuldajul.shop"; //URL 주소
 //"일기 작성 페이지" ajax 연결 시작 부분 //
 document.addEventListener('DOMContentLoaded', function() {
+
+    // 쿠키에서 accessToken을 가져오는 함수
+    function getCookie(name) {
+        let value = `; ${document.cookie}`;
+        let parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(";").shift();
+    }
+
+    // accessToken 가져오기
+    const accessToken = getCookie("accessToken");
+
     const saveButton = document.getElementById('diary_save_btn');
     if (saveButton) {
         saveButton.addEventListener('click', function() {
@@ -170,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmNAbmF2ZXIuY29tIiwicm9sZSI6IiIsImlhdCI6MTcyMDYyMTMzMCwiZXhwIjoxNzIwNzIxMzMwfQ.U3EAt5z0IG9rt3Aj7SPcnMY4AdstTQ5tuCo1nSJ0auM"
+                    'Authorization': 'Bearer ' + accessToken
                 },
                 body: JSON.stringify(data)
             })
