@@ -197,7 +197,6 @@
     color: #727272;
     margin-top: 10px;
 }
-
 #recordContentHeader {
     font-size: 20px;
     font-weight: 500;
@@ -209,12 +208,24 @@
     font-weight: 300;
     margin-top: 10px;
     line-height: 22px;
+
+    width: 100%;
+    max-height: 200px;
+    overflow-y: scroll;
+    word-break: normal;
+    overflow-wrap: normal;
+
+    -ms-overflow-style: none;
 }
 
 #recordContent hr {
     border: 3px solid #2B2B2B;
     margin-top: 20px;
 }
+
+#recordContent::-webkit-scrollbar{
+    display:none;
+  }
 
 .hashBox {
     width: 1024px;
@@ -249,6 +260,16 @@
     color: white;
     border: none;
     border-radius: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.hashBox .recordDetail {
+    width: 71px;
+    height: 35px;
+    background-color: #11E5B3;
+    border: none;
+    border-radius: 30px;
     font-weight: 500;
     cursor: pointer;
 }
