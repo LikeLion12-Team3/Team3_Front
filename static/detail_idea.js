@@ -82,8 +82,12 @@ document.addEventListener("DOMContentLoaded", function() {
             ideaContentHeader.textContent = data.activityHeader;
         
             // Markdown 형식의 내용 추가
+            function parse(md) {
+                return parseMd(md);
+            }
+
             const ideaMarkdownBox = document.getElementById('ideaContent');
-            ideaMarkdownBox.innerHTML = data.markdownContent; // parseMd 함수를 사용하여 Markdown을 HTML로 변환
+            ideaMarkdownBox.innerHTML = parse(data.mainText); // parseMd 함수를 사용하여 Markdown을 HTML로 변환
         
             // 수정 버튼 클릭 시 동작
             const modifyButton = document.querySelector('.ideaModify');
