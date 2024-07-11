@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const modifyButton = document.querySelector('.ideaModify');
             modifyButton.addEventListener('click', function() {
                 // 수정 페이지로 이동하는 코드
-                window.location.href = `edit_idea.html?id=${data.id}`;
+                window.location.href = `modify_idea.html?id=${data.id}`;
             });
         
             // 삭제 버튼 클릭 시 동작

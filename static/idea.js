@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 // title 길이 제한 및 생략 처리
-                const maxLength = 50; // 최대 글자 수
+                const maxLength = 8; // 최대 글자 수
                 const trimmedTitle = title.length > maxLength ? title.substring(0, maxLength) + '...' : title;
 
                 // mainText 길이 제한 및 생략 처리
