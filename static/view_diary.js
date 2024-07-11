@@ -44,72 +44,55 @@ document.addEventListener("DOMContentLoaded", function () {
         const basicSubtitles = getSubtitle(template);
         console.log(basicSubtitles);
 
+        //제목&날짜 변경
+        const recordTitle = document.getElementById("recordTitle");
+        recordTitle.innerHTML = data.title;
+        const recordDate = document.getElementById("recordDate");
+        recordDate.innerHTML = formatDate(data.createdAt);
+
         
-        // 필요한 데이터 추출
-        const title = data.title;
-        const createDate = formatDate(data.createdAt); // 날짜 포맷팅 함수 사용
+        //내용 합치기
         const mainText = data.mainText; //위치 1
         const impression = data.impression; //위치2
         const remark = data.remark; //위치3
         const plan = data.plan; //위치 4
 
+        let totalText = ``;
+
+        if (data.mainText.length > 1) {
+            totalText += `#- ${basicSubtitles[0]}\n${mainText}<br><br>`; // <br> 태그를 추가하여 줄바꿈을 나타냅니다.
+        }
+        if (data.impression.length > 1) {
+            totalText += `#- ${basicSubtitles[1]}\n${impression}<br><br>`;
+        }
+        if (data.remark.length > 1) {
+            totalText += `#- ${basicSubtitles[2]}\n${remark}<br><br>`;
+        }
+        if (data.plan.length > 1) {
+            totalText += `#- ${basicSubtitles[3]}\n${plan}`;
+        }
+        console.log(totalText);
         
 
 
-        /*
+        //마크다운 적용
+        const markdownBoxElements = document.getElementsByClassName("markdownBox");
 
-        // 해시태그가 올바르게 받아졌는지 확인
-        console.log('Hashtags:', data.hashtagNames);
-
-        let hashtagsHTML = '';
-        if (Array.isArray(data.hashtagNames) && data.hashtagNames.length > 0) {
-            hashtagsHTML = data.hashtagNames.map(tag => `<span class="hashs">${tag}</span>`).join(' ');
+        function parse(md) {
+            return parseMd(md);
         }
 
-        // HTML 요소에 데이터 적용
-        /*
-        const detailRecord = document.createElement('div');
-        detailRecord.classList.add('detailRecord');
+        Array.from(markdownBoxElements).forEach(markdownBox => {
+            markdownBox.innerHTML = parse(totalText);
+        });
 
-        const combinedText = `
-            ${mainText}\n
-            ${impression}\n
-            ${remark}\n
-            ${plan}\n
-        `;
 
-        // Use parseMd function to convert the combined Markdown text to HTML
-        const parsedContent = parseMd(combinedText);
+        //해시태그 적용
+        const combinedHash = data.hashtagNames.join(`&nbsp&nbsp&nbsp`); // 공백 문자를 구분자로 사용하여 배열 요소를 하나의 문자열로 합침
+        const hashs = document.querySelector(".hashs");
+        hashs.innerHTML = combinedHash;
 
-        detailRecord.innerHTML = `
-            <p id="recordTitle">${title}</p>
-            <p id="recordDate">${createDate}의 일기</p>
-            <div id="recordContentHeader">
-                ${template}
-            </div>
-            <div class="markdownBox" id="recordContent">
-                ${parsedContent}
-            </div>
-            <div class="hashBox">
-                <div id="RecordHashList">
-                    ${hashtagsHTML}
-                </div>
-                <div>
-                    <button class="recordModify">수정</button>
-                    <button class="recodeDelete">삭제</button>
-                </div>
-            </div>
-        `;
 
-        // 보드 정보가 들어갈 부모 요소
-        const recordParent = document.querySelector('.record');
-        // 부모 요소에 추가
-        recordParent.appendChild(detailRecord);
-
-        const recordNumElement = document.getElementById('recordNum');
-        const currentCount = parseInt(recordNumElement.textContent) || 0;
-        recordNumElement.textContent = currentCount + 1;
-        */
 
     })
     .catch(error => {
@@ -126,11 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return `${year}년 ${month}월 ${day}일`;
     }
 
-    // Assuming parseMd is defined somewhere else to convert Markdown to HTML
-    function parseMd(md) {
-        // Add your Markdown parsing logic here
-        return md; // Replace with actual parsed HTML
-    }
+
 });
 
 
@@ -142,12 +121,12 @@ document.addEventListener("DOMContentLoaded", function() {
         window.location.href = 'modify_diary.html';
     });
 
-    //임시 마크다운 코드
 
 });
 
 
 //마크다운
+/*
 document.addEventListener("DOMContentLoaded", function () {
     // API 연동 시 이 부분 수정
     const testText = `#제목1
@@ -166,13 +145,14 @@ document.addEventListener("DOMContentLoaded", function () {
         markdownBox.innerHTML = parse(testText);
     });
 });
+*/
 
 //템플릿 소제목 분류
 function getSubtitle(templateName) {
     const templates = {
         basic: {
             name: "Basic",
-            subtitle1: "개발내용",
+            subtitle1: "개발 내용",
             subtitle2: "느낀점",
             subtitle3: "특이사항",
             subtitle4: "내일의 계획"
