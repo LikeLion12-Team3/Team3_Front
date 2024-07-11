@@ -150,7 +150,6 @@ document.addEventListener("DOMContentLoaded", function() {
             method: "PATCH",
             headers: {
                 "Content-Type" : "application/json",
-                "Access-Control-Allow-Origin": "*",
                 'Authorization': 'Bearer ' + accessToken
             },
             body: JSON.stringify({
@@ -158,9 +157,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 maintext: newMaintext,
             }),
         })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log("변경된 내용: ", data);
+        .then(() => {
+            console.log("변경되었습니다.");
         })
         .catch((error) => {
             console.error("내용 변경 실패", error);
