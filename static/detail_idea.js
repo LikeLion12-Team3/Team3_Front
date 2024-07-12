@@ -62,6 +62,21 @@ document.addEventListener("DOMContentLoaded", function() {
             const ideaTitleElement = document.getElementById('ideaTitle');
             const ideaDateElement = document.getElementById('ideaDate');
             const ideaContentElement = document.getElementById('ideaContent');
+
+            //사진
+            const parentElement = document.getElementById('ideaImageBox')
+
+            for (let i = 0; i < data.imageURL.length; i++) {
+                const newDiv = document.createElement('div');
+                newDiv.classList.add('ideaImage'); // 클래스 추가
+             
+                const newImg = document.createElement('img');
+                newImg.src = data.imageURL[i]; // 이미지 소스 설정
+
+                newDiv.appendChild(newImg);
+            
+                parentElement.appendChild(newDiv);
+            }
         
             // 데이터를 페이지에 표시
             ideaTitleElement.textContent = data.title;
