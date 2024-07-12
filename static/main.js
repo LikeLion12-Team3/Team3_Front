@@ -78,7 +78,7 @@ function todaysummary(accessToken, year, month, date){
         const todayList = document.querySelector('.todayContainer ul');
 
         // data.summary 문자열을 줄 단위로 분할하여 배열로 변환
-        const summaries = data.summary.split('\n');
+        const summaries = data.summary ? data.summary.split('\n') : ["데이터가 없습니다"];
         console.log("summaries", summaries);
 
         // 각 요약을 <li> 요소로 추가
