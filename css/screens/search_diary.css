@@ -1,3 +1,10 @@
+.search-outside {
+    background-color: red;
+    position: relative;
+
+}
+
+
 /* 검색창 */
 .search-container2 {
     display: flex;
