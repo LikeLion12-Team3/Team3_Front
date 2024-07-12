@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     //저장버튼 API 연동
-    saveBtn.addEventListener("click", function () {
+    document.getElementById('diary_save_btn').addEventListener("click", function () {
         const saveBtn = document.getElementById("diary_save_btn");
         // 해시태그를 '#'으로 구분하여 배열로 변환
         var hashtagContent = document.getElementById('hashtag_content').value;
