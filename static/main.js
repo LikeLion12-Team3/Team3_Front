@@ -54,6 +54,43 @@ function commits(accessToken, year, month) {
   });
 }
 
+function todaysummary(accessToken, year, month, date){
+    const url = `${API_SERVER_DOMAIN}/summary?year=${year}&month=${month}&day=${day}`;
+
+    return fetch(url, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + accessToken,
+        },
+    })
+    .then((response) => {
+        if(!response.ok) {
+            throw new Error("Failed to fetch commits");
+        }
+        return response.json();
+    })
+    .then((data) => {
+        console.log('보드 정보:', data);
+        // '오늘의 별다줄' 리스트를 가져옴
+        const todayList = document.querySelector('.todayContainer ul');
+
+        // data.summary 문자열을 줄 단위로 분할하여 배열로 변환
+        const summaries = data.summary.split('\n');
+
+        // 각 요약을 <li> 요소로 추가
+        summaries.forEach((summary, index) => {
+            if (summary.trim() !== "") { // 빈 줄 무시
+                const listItem = document.createElement('li');
+                listItem.textContent = `${index + 1}. ${summary}`;
+                todayList.appendChild(listItem);
+            }
+        });
+    })
+    .catch(error => {
+        console.error('Fetch error:', error);
+    });
+}
 
 
 
@@ -305,6 +342,9 @@ document.addEventListener('DOMContentLoaded', function() {
             generateCalendar(currentMonth, currentYear, dayIndex, zeroArray);
     });
 
+    //오늘의 일기 요약
+    todaysummary(accessToken, year, month, day);
+
 });
 
 // 템플릿 클릭시
@@ -318,3 +358,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
