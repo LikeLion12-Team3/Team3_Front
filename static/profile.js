@@ -38,7 +38,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var confirmWithdraw = confirm("진짜 탈퇴 하시겠습니까?");
     if (confirmWithdraw) {
       fetch(API_SERVER_DOMAIN + "/users", {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
       })
       .then(response => {
         if (response.ok) {
@@ -62,7 +65,19 @@ document.addEventListener("DOMContentLoaded", function () {
     var confirmlogout = confirm("로그아웃 하시겠습니까?");
     if (confirmlogout) {
       alert("로그아웃 되셨습니다.");
-      window.location.href = "login.html";
+      fetch(API_SERVER_DOMAIN + "/users/logout", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          window.location.href = "login.html";
+        })
+        .catch((error) => {
+          console.error("error: 로그인 실패,", error);
+        });
     }
   });
 });
