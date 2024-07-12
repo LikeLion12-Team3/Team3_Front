@@ -100,6 +100,47 @@ document.addEventListener("DOMContentLoaded", function () {
         // 에러 처리 로직
     });
 
+
+    // 일기 수정화면으로 이동
+    const modifyBtn = document.querySelector(".recordModify");
+    modifyBtn.addEventListener("click", function() {
+        // window.location.href = 'modify_diary.html';
+        const url = `modify_diary.html?boardId=${encodeURIComponent(boardId)}`;
+                // 페이지 이동
+        window.location.href = url;
+    });
+
+    // 일기 삭제
+    const deleteBtn = document.querySelector(".recodeDelete");
+    deleteBtn.addEventListener("click", function() {
+
+        fetch(`https://api.byuldajul.shop/diary/${boardId}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type" : "application/json",
+                'Authorization': 'Bearer ' + accessToken
+            }
+        })
+        .then((response) => {
+            if (response.ok) {
+                window.location.href = 'diary_check.html';
+
+            } else {
+                throw new Error('네트워크 에러: ' + response.statusText);
+            }
+        })
+        .catch((error) => {
+            console.error("내용 변경 실패", error);
+        });
+        
+    
+    });
+
+
+
+
+
+
     // 날짜 포맷 함수
     function formatDate(dateString) {
         const date = new Date(dateString);
@@ -115,11 +156,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function() {
 
-    // 일기 수정화면으로 이동
-    const modifyBtn = document.querySelector(".recordModify");
-    modifyBtn.addEventListener("click", function() {
-        window.location.href = 'modify_diary.html';
-    });
+    
+
 
 
 });

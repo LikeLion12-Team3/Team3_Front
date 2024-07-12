@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((response) => response.json())
     .then((data) => {
       document.getElementById("username").textContent = data.nickname;
-      document.getElementById("email").textContent = data.eamil;
+      document.getElementById("email").textContent = data.email;
     })
     .catch((error) => {
       console.error("Error fetching user data:", error);
@@ -37,10 +37,27 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
     var confirmWithdraw = confirm("진짜 탈퇴 하시겠습니까?");
     if (confirmWithdraw) {
-      alert("탈퇴되었습니다.");
-      window.location.href = "login.html";
+      fetch(API_SERVER_DOMAIN + "/users", {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      .then(response => {
+        if (response.ok) {
+          alert("탈퇴되었습니다.");
+          window.location.href = "login.html";
+        } else {
+          alert("탈퇴에 실패했습니다. 다시 시도해주세요.");
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert("탈퇴 과정에서 오류가 발생했습니다. 다시 시도해주세요.");
+      });
     }
   });
+
 
   var logoutLink = document.getElementById("logout");
   logoutLink.addEventListener("click", function (event) {
@@ -48,7 +65,19 @@ document.addEventListener("DOMContentLoaded", function () {
     var confirmlogout = confirm("로그아웃 하시겠습니까?");
     if (confirmlogout) {
       alert("로그아웃 되셨습니다.");
-      window.location.href = "login.html";
+      fetch(API_SERVER_DOMAIN + "/users/logout", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          window.location.href = "login.html";
+        })
+        .catch((error) => {
+          console.error("error: 로그인 실패,", error);
+        });
     }
   });
 });

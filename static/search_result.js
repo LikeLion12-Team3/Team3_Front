@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     // API 호출
-    const url = `https://api.byuldajul.shop/diary?query=${savedInput}`;
+    const url = `https://api.byuldajul.shop/diary?query=${savedInput.substring(1)}`;
     fetch(url, {
         method: 'GET',
         headers: {
@@ -47,14 +47,9 @@ document.addEventListener("DOMContentLoaded", function() {
         return response.json(); 
     })
     .then(data => {
-        // 성공적으로 데이터를 받아왔을 때 확인
-        console.log(data);
-        console.log(data.length);
-        console.log(data[2].title);
-
         //총 n개의 일기 수정
         let diaryNum = document.getElementById("diaryNum");
-        diaryNum.innerText = data.length;
+        diaryNum.innerText = `총 ${data.length}개의 일기`;
 
 
         //컨테이너에 검색된 일기 개수 만큼 자식 추가
@@ -68,7 +63,6 @@ document.addEventListener("DOMContentLoaded", function() {
             ideaContentContainer.classList.add('idea_content_container');
 
             const ideaTabTitle = document.createElement('span');
-            //글자수 제한
             //글자수 제한
             const maxLength = 30;
             const trimmedTitleText = data[i].title.length > maxLength ? data[i].title.substring(0, maxLength) + '...' : data[i].title;  
@@ -126,6 +120,9 @@ document.addEventListener("DOMContentLoaded", function() {
     .catch(error => {
         console.error('보드 정보를 가져오는 중 에러 발생:', error);
         // 에러 처리 로직
+        let diaryNum = document.getElementById("diaryNum");
+        diaryNum.innerText = `검색과 일치하는 기록이 없습니다.`;
+        diaryNum.style.marginTop = "400px"; // 원하는 값으로 변경
     });
 
 });

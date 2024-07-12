@@ -103,3 +103,67 @@ document.addEventListener('DOMContentLoaded', function () {
         window.history.back();
     });
 });
+
+let API_SERVER_DOMAIN = "https://api.byuldajul.shop"
+
+document.addEventListener("DOMContentLoaded", function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const ideaId = urlParams.get('id');
+    
+     // 쿠키에서 accessToken을 가져오는 함수
+     function getCookie(name) {
+        let value = `; ${document.cookie}`;
+        let parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(";").shift();
+    }
+
+    // accessToken 가져오기
+    const accessToken = getCookie("accessToken");
+
+    //아이디어 정보 가져오기
+    fetch(`${API_SERVER_DOMAIN}/idea/${ideaId}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        document.getElementById("modify_idea_title").value = data.title;
+        document.getElementById("idea_content1").value = data.mainText;
+    })
+    .catch((error) => {
+        console.error("Error fetching user data:", error);
+    });
+
+    const saveBtn = document.getElementById("idea_save_btn");
+    saveBtn.addEventListener("click", function () {
+        const newTitle = document.getElementById("modify_idea_title").value;
+        const newMaintext = document.getElementById("idea_content1").value;
+        
+        fetch(`${API_SERVER_DOMAIN}/idea/${ideaId}`,{
+            method: "PATCH",
+            headers: {
+                "Content-Type" : "application/json",
+                'Authorization': 'Bearer ' + accessToken
+            },
+            body: JSON.stringify({
+                title: newTitle,
+                mainText: newMaintext,
+            }),
+        })
+        .then(() => {
+            console.log(newMaintext);
+            console.log("변경되었습니다.");
+            window.location.href = `detail_idea.html?id=${ideaId}`;
+        })
+        .catch((error) => {
+            console.error("내용 변경 실패", error);
+        });
+    });  
+});
