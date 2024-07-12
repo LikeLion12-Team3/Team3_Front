@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var fileInput = document.getElementById('fileInput');
+    /*var fileInput = document.getElementById('fileInput');
     var container = document.querySelector('.image_preview_container');
     var uploadBox = document.querySelector('.upload-box');
     var maxImages = 4;
@@ -68,7 +68,7 @@ function checkImageCount() {
 
     var dateString = year + '년 ' + month + '월 ' + day + '일';
     var h1Element = document.getElementById('modify_idea_date');
-    h1Element.textContent = dateString;
+    h1Element.textContent = dateString;*/
 });
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -107,6 +107,74 @@ document.addEventListener('DOMContentLoaded', function () {
 let API_SERVER_DOMAIN = "https://api.byuldajul.shop"
 
 document.addEventListener("DOMContentLoaded", function() {
+
+    var fileInput = document.getElementById('fileInput');
+    var container = document.querySelector('.image_preview_container');
+    var uploadBox = document.querySelector('.upload-box');
+    var maxImages = 4;
+    var selectedFiles = [];
+
+    fileInput.addEventListener('change', function() {
+        var files = Array.from(this.files);
+        if (files.length + selectedFiles.length > maxImages) {
+            alert('최대 4개까지만 업로드할 수 있습니다.');
+            return;
+        }
+
+        files.forEach(file => {
+            selectedFiles.push(file);
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                addImagePreview(e.target.result);
+                checkImageCount();
+            };
+            reader.readAsDataURL(file);
+        });
+    });
+
+
+    function addImagePreview(src) {
+        var newPreviewContainer = document.createElement('div');
+        newPreviewContainer.className = 'image-preview-container';
+    
+        var newImage = document.createElement('img');
+        newImage.src = src;
+        newImage.alt = '이미지 미리보기';
+        newImage.className = 'image-preview';
+    
+        var deleteButton = document.createElement('button');
+        deleteButton.className = 'delete-button';
+        deleteButton.innerHTML = '&times;';
+        deleteButton.onclick = function() {
+            newPreviewContainer.remove();
+            checkImageCount();
+        };
+    
+        newPreviewContainer.appendChild(newImage);
+        newPreviewContainer.appendChild(deleteButton);
+    
+        container.insertBefore(newPreviewContainer, uploadBox);
+    
+        // 업로드 박스를 이동
+        container.appendChild(uploadBox);
+    
+        uploadBox.style.display = 'flex';
+    
+        checkImageCount();
+    }
+    
+    function checkImageCount() {
+        var previews = document.querySelectorAll('.image-preview-container');
+        if (previews.length >= maxImages) {
+            uploadBox.style.display = 'none';
+        } else {
+            uploadBox.style.display = 'flex';
+        }
+    
+        
+    }
+
+
     const urlParams = new URLSearchParams(window.location.search);
     const ideaId = urlParams.get('id');
     
@@ -134,6 +202,19 @@ document.addEventListener("DOMContentLoaded", function() {
         return response.json();
     })
     .then(data => {
+        console.log(data);
+        //사진
+        for (let i=0; i<data.imageURL.length; i++) {
+            addImagePreview(data.imageURL[i]);
+            
+            //newImage.src = data.imageURL[i];
+        }
+        //여기까지
+
+
+
+
+
         document.getElementById("modify_idea_title").value = data.title;
         document.getElementById("idea_content1").value = data.mainText;
     })
@@ -141,29 +222,42 @@ document.addEventListener("DOMContentLoaded", function() {
         console.error("Error fetching user data:", error);
     });
 
+
+    console.log(accessToken);
     const saveBtn = document.getElementById("idea_save_btn");
     saveBtn.addEventListener("click", function () {
-        const newTitle = document.getElementById("modify_idea_title").value;
-        const newMaintext = document.getElementById("idea_content1").value;
-        
+        var idea = {
+            title: document.getElementById("modify_idea_title").value,
+            mainText: document.getElementById("idea_content1").value
+        };
+
+        var formData = new FormData();
+        formData.append('updateIdeaRequestDto', new Blob([JSON.stringify(idea)], { type: 'application/json' }));
+
+        selectedFiles.forEach((file) => {
+            formData.append('images', file);
+        });
+
         fetch(`${API_SERVER_DOMAIN}/idea/${ideaId}`,{
             method: "PATCH",
             headers: {
-                "Content-Type" : "application/json",
                 'Authorization': 'Bearer ' + accessToken
             },
-            body: JSON.stringify({
-                title: newTitle,
-                mainText: newMaintext,
-            }),
+            body: formData
         })
-        .then(() => {
-            console.log(newMaintext);
-            console.log("변경되었습니다.");
-            window.location.href = `detail_idea.html?id=${ideaId}`;
+        .then(response => {
+            console.log('서버 응답:', response);
+
+            if (response.ok) {
+                console.log('아이디어 저장 성공');
+                window.location.href = `detail_idea.html?id=${ideaId}`;
+            } else {
+                throw new Error('네트워크 에러: ' + response.statusText);
+            }
         })
         .catch((error) => {
             console.error("내용 변경 실패", error);
         });
     });  
+    
 });
