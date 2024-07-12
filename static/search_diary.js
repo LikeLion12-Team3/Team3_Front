@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             searchStr.classList.add('search-str'); // 클래스 추가
 
             //API 연결
-            const url = `https://api.byuldajul.shop/diary?query=${search}`;
+            const url = `https://api.byuldajul.shop/diary?query=${search.substring(1)}`;
             fetch(url, {
                 method: 'GET',
                 headers: {

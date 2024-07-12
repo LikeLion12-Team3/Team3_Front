@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     // API 호출
-    const url = `https://api.byuldajul.shop/diary?query=${savedInput}`;
+    const url = `https://api.byuldajul.shop/diary?query=${savedInput.substring(1)}`;
     fetch(url, {
         method: 'GET',
         headers: {
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         //총 n개의 일기 수정
         let diaryNum = document.getElementById("diaryNum");
-        diaryNum.innerText = data.length;
+        diaryNum.innerText = `총 ${data.length}개의 일기`;
 
 
         //컨테이너에 검색된 일기 개수 만큼 자식 추가
@@ -125,6 +125,9 @@ document.addEventListener("DOMContentLoaded", function() {
     .catch(error => {
         console.error('보드 정보를 가져오는 중 에러 발생:', error);
         // 에러 처리 로직
+        let diaryNum = document.getElementById("diaryNum");
+        diaryNum.innerText = `검색과 일치하는 기록이 없습니다.`;
+        diaryNum.style.marginTop = "400px"; // 원하는 값으로 변경
     });
 
 });
