@@ -380,6 +380,8 @@ function dateDiaryLoad(accessToken, date) {
 
             const parsedContent = parseMd(totalText);
 
+            const id = data[i].boardId;
+
             detailRecord.innerHTML = `
                 <p id="recordTitle">${title}</p>
                 <p id="recordDate">${createDate}</p>
@@ -391,19 +393,21 @@ function dateDiaryLoad(accessToken, date) {
                         ${combinedHash}
                     </div>
                     <div>
-                        <button class="recordDetail">더보기</button>
+                        <button class="recordDetail" data-diary-id="${id}">더보기</button>
                     </div>
                 </div>
             `;
-
-
-
-
             // 보드 정보가 들어갈 부모 요소
             const recordParent = document.querySelector('.record');
             // 부모 요소에 추가
             recordParent.appendChild(detailRecord);
 
+            // 더보기 버튼에 클릭 이벤트 리스너 추가
+            const moreButton = detailRecord.querySelector('.recordDetail');
+            moreButton.addEventListener('click', () => {
+                console.log('선택된 아이디어 ID:', id)
+                window.location.href = `view_diary.html?diaryId=${id}`;
+            });
         }
 
 

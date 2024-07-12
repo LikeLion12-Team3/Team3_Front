@@ -37,10 +37,24 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
     var confirmWithdraw = confirm("진짜 탈퇴 하시겠습니까?");
     if (confirmWithdraw) {
-      alert("탈퇴되었습니다.");
-      window.location.href = "login.html";
+      fetch(API_SERVER_DOMAIN + "/users", {
+        method: 'DELETE'
+      })
+      .then(response => {
+        if (response.ok) {
+          alert("탈퇴되었습니다.");
+          window.location.href = "login.html";
+        } else {
+          alert("탈퇴에 실패했습니다. 다시 시도해주세요.");
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert("탈퇴 과정에서 오류가 발생했습니다. 다시 시도해주세요.");
+      });
     }
   });
+
 
   var logoutLink = document.getElementById("logout");
   logoutLink.addEventListener("click", function (event) {
