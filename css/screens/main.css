@@ -491,10 +491,10 @@ td:hover {
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background-color: #ccc;
+    background-color: #333;
     transition: background-color 0.3s;
 }
 
 .dot.active {
-    background-color: #333;
+    background-color: #ccc;
 }
