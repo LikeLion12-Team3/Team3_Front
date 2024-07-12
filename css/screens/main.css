@@ -20,7 +20,7 @@ body{
 
 /* 캘린더 */
 .calendar {
-    background: #2B2B2B;
+    background: #2B2B2B; 
     border-radius: 30px;
     height: 392px;
     width: 361px;
@@ -243,7 +243,7 @@ td:hover {
 
 /* 가장 최근 기록으로 이동하기 */
 .recent {
-    background: #683DE5;
+    background: linear-gradient(150deg, #592cdd, #854fea); /* 보라색 그라데이션 */
     border-radius: 30px;
     height: 160px;
     width: 197px;
@@ -271,6 +271,7 @@ td:hover {
     color: #FFFFFF;
     margin-left: 149px;
     margin-top: 35px;
+    cursor: pointer;
 }
 
 .recent i:hover {
