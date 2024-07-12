@@ -72,13 +72,13 @@ function todaysummary(accessToken, year, month, date){
     })
     .then((data) => {
         console.log('보드 정보:', data);
-        // '오늘의 별다줄' 리스트를 가져옴
+        // '오늘의 별다줄' 리스트를 가져옴`
 
         
         const todayList = document.querySelector('.todayContainer ul');
 
         // data.summary 문자열을 줄 단위로 분할하여 배열로 변환
-        const summaries = data.summary ? data.summary.split('\n') : ["데이터가 없습니다"];
+        const summaries = data.summary ? data.summary.split('\n') : ["해당 일자에 작성된 일기가 없습니다."];
         console.log("summaries", summaries);
 
         // 각 요약을 <li> 요소로 추가
