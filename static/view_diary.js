@@ -60,16 +60,16 @@ document.addEventListener("DOMContentLoaded", function () {
         let totalText = ``;
 
         if (data.mainText.length > 1) {
-            totalText += `#- ${basicSubtitles[0]}\n${mainText}<br><br>`; // <br> 태그를 추가하여 줄바꿈을 나타냅니다.
+            totalText += `#- ${basicSubtitles[0]}\n${mainText}<br><br>\n`; // <br> 태그를 추가하여 줄바꿈을 나타냅니다.
         }
         if (data.impression.length > 1) {
-            totalText += `#- ${basicSubtitles[1]}\n${impression}<br><br>`;
+            totalText += `#- ${basicSubtitles[1]}\n${impression}<br><br>\n`;
         }
         if (data.remark.length > 1) {
-            totalText += `#- ${basicSubtitles[2]}\n${remark}<br><br>`;
+            totalText += `#- ${basicSubtitles[2]}\n${remark}<br><br>\n`;
         }
         if (data.plan.length > 1) {
-            totalText += `#- ${basicSubtitles[3]}\n${plan}`;
+            totalText += `#- ${basicSubtitles[3]}\n${plan}\n`;
         }
         console.log(totalText);
         

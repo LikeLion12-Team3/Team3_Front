@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => {
                 console.error('에러: 일기 저장 실패', error);
-                alert('일기 저장에 실패하셨습니다.');
+                //alert('일기 저장에 실패하셨습니다.');
             });
         });
     }
