@@ -178,7 +178,8 @@ td:hover {
 }
 /* 오늘의 해시태그 */
 .hashtag {
-    background: #2B2B2B;
+    background: transparent;
+    /* border: solid 3px #2B2B2B; */
     border-radius: 30px;
     height: 160px;
     width: 441px;
@@ -448,3 +449,51 @@ td:hover {
     font-weight: bold;
 }
 
+/*이미지 슬라이더 */
+.slider {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+    width: 300%;
+    height: 100%;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    flex: 1 0 100%;
+}
+
+.slide img {
+    width: 441px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+.dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #ccc;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: #333;
+}
