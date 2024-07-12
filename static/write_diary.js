@@ -143,6 +143,41 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    let hashBox = document.getElementById("hashtag_content");
+    hashBox.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // 기본 엔터 키 동작을 막음
+    
+            // 현재 커서 위치를 가져옴
+            const start = this.selectionStart;
+            const end = this.selectionEnd;
+            const textBeforeCursor = this.value.substring(0, start);
+            const textAfterCursor = this.value.substring(end);
+    
+            // 새로운 줄 앞에 # 추가
+            const newText = textBeforeCursor + '\n#' + textAfterCursor;
+    
+            // 새로운 값 설정
+            this.value = newText;
+    
+            // 커서 위치를 새로운 줄 뒤로 설정
+            this.selectionStart = this.selectionEnd = start + 2;
+        }
+    });
+    hashBox.addEventListener('focus', () => {
+
+        // 포커스가 되면 검색어 앞에 "#" 추가
+        if (!hashBox.value.startsWith('#')) {
+            hashBox.value = `#${hashBox.value}`;
+        }
+    
+    });
+});
+
+
+
+
 var API_SERVER_DOMAIN = "https://api.byuldajul.shop"; //URL 주소
 //"일기 작성 페이지" ajax 연결 시작 부분 //
 document.addEventListener('DOMContentLoaded', function() {

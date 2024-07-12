@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then((response) => {
             if (response.ok) {
-                window.location.href = 'search_result.html';
+                window.location.href = 'diary_check.html';
 
             } else {
                 throw new Error('네트워크 에러: ' + response.statusText);
