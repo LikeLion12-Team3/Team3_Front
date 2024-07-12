@@ -97,6 +97,30 @@ function todaysummary(accessToken, year, month, date){
 }
 
 
+function latestId(accessToken) {
+    return fetch(API_SERVER_DOMAIN + "/diary/latest-id", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + accessToken,
+        },
+      })
+        .then((response) => {
+          //console.log(response)
+          if (!response.ok) {
+            throw new Error("Failed to refresh access token");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log("최근기록",data.latestDiaryId)
+          const diaryId = data.latestDiaryId;
+          const url = `view_diary.html?diaryId=${encodeURIComponent(diaryId)}`;
+          window.location.href = url;
+
+        });
+}
+
 
 
 function changeImage(event, element) {
@@ -352,6 +376,11 @@ document.addEventListener('DOMContentLoaded', function() {
     //오늘의 일기 요약
     todaysummary(accessToken, `${currentYear}`, `${currentMonth+1}`, `${new Date().getDate()}`);
 
+
+    //가장 최근 기록으로 이동하기
+    document.querySelector('.recent i').addEventListener('click', function() {
+        latestId(accessToken)
+    });
 });
 
 // 템플릿 클릭시

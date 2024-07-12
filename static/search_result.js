@@ -47,11 +47,6 @@ document.addEventListener("DOMContentLoaded", function() {
         return response.json(); 
     })
     .then(data => {
-        // 성공적으로 데이터를 받아왔을 때 확인
-        console.log(data);
-        console.log(data.length);
-        console.log(data[2].title);
-
         //총 n개의 일기 수정
         let diaryNum = document.getElementById("diaryNum");
         diaryNum.innerText = `총 ${data.length}개의 일기`;

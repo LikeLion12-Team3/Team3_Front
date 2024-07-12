@@ -9,6 +9,19 @@ document.addEventListener('DOMContentLoaded', () => {
     let searches = JSON.parse(localStorage.getItem('recentSearches')) || [];
 
 
+    // body에 클릭 이벤트 리스너 추가
+    document.body.addEventListener('click', function(event) {
+        // 검색창 및 모달을 제외한 나머지 부분 확인
+        const searchContainer = document.querySelector('.search-container2');
+        const recentModal = document.querySelector('#recent-modal');
+
+        if (!searchContainer.contains(event.target) && !recentModal.contains(event.target)) {
+            console.log('body의 나머지 부분이 클릭되었습니다.');
+            // 여기에 원하는 작업을 수행
+            window.history.back();
+        }
+    });
+
     function updateRecentSearches() {
         //API 연동
         //태그 개수 API 연동
