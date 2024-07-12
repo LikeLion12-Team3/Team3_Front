@@ -75,7 +75,7 @@ function todaysummary(accessToken, year, month, date){
 
         // data.summary 문자열을 줄 단위로 분할하여 배열로 변환
 
-        const summaries = data.summary ? data.summary.split('\n') : ["데이터가 없습니다"];
+        const summaries = data.summary ? data.summary.split('\n') : ["해당 일자에 작성된 일기가 없습니다."];
 
         console.log("summaries", summaries);
 
