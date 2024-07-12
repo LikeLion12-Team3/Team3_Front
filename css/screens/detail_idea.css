@@ -1,4 +1,3 @@
-
 /* 아이디어 읽기화면 */
 .detailIdea {
     width: 663px;
@@ -6,7 +5,7 @@
     background-color: 2B2B2B;
     border: 1px solid #3B3B3B;
     border-radius: 30px;
-    margin-top: 100px;
+    margin-top: 50px;
     margin-bottom: 30px;
     display: flex;
     align-items: baseline;
