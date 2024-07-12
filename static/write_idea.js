@@ -1,160 +1,320 @@
-document.addEventListener('DOMContentLoaded', function() {
-    var fileInput = document.getElementById('fileInput');
-    var container = document.querySelector('.image_preview_container');
-    var uploadBox = document.querySelector('.upload-box');
-    var maxImages = 4;
+// document.addEventListener('DOMContentLoaded', function() {
+//     var fileInput = document.getElementById('fileInput');
+//     var container = document.querySelector('.image_preview_container');
+//     var uploadBox = document.querySelector('.upload-box');
+//     var maxImages = 4;
 
-    fileInput.addEventListener('change', function() {
-        var files = this.files;
-        if (files.length > maxImages) {
-            alert('최대 4개까지만 업로드할 수 있습니다.');
-            return;
-        }
+//     fileInput.addEventListener('change', function() {
+//         var files = this.files;
+//         if (files.length > maxImages) {
+//             alert('최대 4개까지만 업로드할 수 있습니다.');
+//             return;
+//         }
     
-    for (var i = 0; i < files.length; i++) {
-        var file = files[i];
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            addImagePreview(e.target.result);
-            checkImageCount();
-        };
-        reader.readAsDataURL(file);
-    }
-});
+//     for (var i = 0; i < files.length; i++) {
+//         var file = files[i];
+//         var reader = new FileReader();
+//         reader.onload = function(e) {
+//             addImagePreview(e.target.result);
+//             checkImageCount();
+//         };
+//         reader.readAsDataURL(file);
+//     }
+// });
 
-function addImagePreview(src) {
-    var newPreviewContainer = document.createElement('div');
-    newPreviewContainer.className = 'image-preview-container';
+// function addImagePreview(src) {
+//     var newPreviewContainer = document.createElement('div');
+//     newPreviewContainer.className = 'image-preview-container';
 
-    var newImage = document.createElement('img');
-    newImage.src = src;
-    newImage.alt = '이미지 미리보기';
-    newImage.className = 'image-preview';
+//     var newImage = document.createElement('img');
+//     newImage.src = src;
+//     newImage.alt = '이미지 미리보기';
+//     newImage.className = 'image-preview';
 
-    var deleteButton = document.createElement('button');
-    deleteButton.className = 'delete-button';
-    deleteButton.innerHTML = '&times;';
-    deleteButton.onclick = function() {
-        newPreviewContainer.remove();
-        checkImageCount();
-    };
+//     var deleteButton = document.createElement('button');
+//     deleteButton.className = 'delete-button';
+//     deleteButton.innerHTML = '&times;';
+//     deleteButton.onclick = function() {
+//         newPreviewContainer.remove();
+//         checkImageCount();
+//     };
 
-    newPreviewContainer.appendChild(newImage);
-    newPreviewContainer.appendChild(deleteButton);
+//     newPreviewContainer.appendChild(newImage);
+//     newPreviewContainer.appendChild(deleteButton);
 
-    container.insertBefore(newPreviewContainer, uploadBox);
+//     container.insertBefore(newPreviewContainer, uploadBox);
 
-    // 업로드 박스를 이동
-    container.appendChild(uploadBox);
+//     // 업로드 박스를 이동
+//     container.appendChild(uploadBox);
 
-    uploadBox.style.display = 'flex';
+//     uploadBox.style.display = 'flex';
 
-    checkImageCount();
-}
+//     checkImageCount();
+// }
 
-function checkImageCount() {
-    var previews = document.querySelectorAll('.image-preview-container');
-    if (previews.length >= maxImages) {
-        uploadBox.style.display = 'none';
-    } else {
-        uploadBox.style.display = 'flex';
-    }
-}
+// function checkImageCount() {
+//     var previews = document.querySelectorAll('.image-preview-container');
+//     if (previews.length >= maxImages) {
+//         uploadBox.style.display = 'none';
+//     } else {
+//         uploadBox.style.display = 'flex';
+//     }
+// }
     
-    var today = new Date();
-    var year = today.getFullYear();
-    var month = today.getMonth() + 1; // getMonth()는 0부터 시작하므로 1을 더합니다.
-    var day = today.getDate();
+//     var today = new Date();
+//     var year = today.getFullYear();
+//     var month = today.getMonth() + 1; // getMonth()는 0부터 시작하므로 1을 더합니다.
+//     var day = today.getDate();
 
-    var dateString = year + '년 ' + month + '월 ' + day + '일';
-    var h1Element = document.getElementById('write_idea_date');
-    h1Element.textContent = dateString;
-});
+//     var dateString = year + '년 ' + month + '월 ' + day + '일';
+//     var h1Element = document.getElementById('write_idea_date');
+//     h1Element.textContent = dateString;
+// });
 
-document.addEventListener('DOMContentLoaded', function() {
-    // DOM이 로드된 후 초기 상태를 설정하기 위해 이벤트 리스너를 추가합니다.
-    var titleInput = document.querySelector('.write_idea_title input');
-    var ideaContentInput = document.getElementById('idea_content1');
-    var saveButton = document.getElementById('idea_save_btn');
+// document.addEventListener('DOMContentLoaded', function() {
+//     // DOM이 로드된 후 초기 상태를 설정하기 위해 이벤트 리스너를 추가합니다.
+//     var titleInput = document.querySelector('.write_idea_title input');
+//     var ideaContentInput = document.getElementById('idea_content1');
+//     var saveButton = document.getElementById('idea_save_btn');
 
-    // 입력 필드에 입력이 발생할 때마다 호출될 함수를 정의합니다.
-    function checkInputs() {
-        var titleValue = titleInput.value.trim();
-        var ideaContentValue = ideaContentInput.value.trim();
+//     // 입력 필드에 입력이 발생할 때마다 호출될 함수를 정의합니다.
+//     function checkInputs() {
+//         var titleValue = titleInput.value.trim();
+//         var ideaContentValue = ideaContentInput.value.trim();
 
-        // 제목과 아이디어 내용 모두 입력되어 있으면 저장 버튼을 활성화합니다.
-        if (titleValue !== '' && ideaContentValue !== '') {
-            saveButton.disabled = false;
-        } else {
-            saveButton.disabled = true;
-        }
-    }
+//         // 제목과 아이디어 내용 모두 입력되어 있으면 저장 버튼을 활성화합니다.
+//         if (titleValue !== '' && ideaContentValue !== '') {
+//             saveButton.disabled = false;
+//         } else {
+//             saveButton.disabled = true;
+//         }
+//     }
 
-    // 입력 필드에 입력 이벤트 리스너를 추가합니다.
-    titleInput.addEventListener('input', checkInputs);
-    ideaContentInput.addEventListener('input', checkInputs);
+//     // 입력 필드에 입력 이벤트 리스너를 추가합니다.
+//     titleInput.addEventListener('input', checkInputs);
+//     ideaContentInput.addEventListener('input', checkInputs);
 
-    // 초기 상태 설정을 위해 한 번 호출합니다.
-    checkInputs();
-});
+//     // 초기 상태 설정을 위해 한 번 호출합니다.
+//     checkInputs();
+// });
 
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('guideline').addEventListener('click', function() {
-        var overlay = this.nextElementSibling;
-        overlay.style.opacity = (overlay.style.opacity === '1') ? '0' : '1'; // 토글
-    });
-    document.getElementById('idea_cancel_btn').addEventListener('click', function() {
-        window.history.back();
-    });
-});
+// document.addEventListener('DOMContentLoaded', function() {
+//     document.getElementById('guideline').addEventListener('click', function() {
+//         var overlay = this.nextElementSibling;
+//         overlay.style.opacity = (overlay.style.opacity === '1') ? '0' : '1'; // 토글
+//     });
+//     document.getElementById('idea_cancel_btn').addEventListener('click', function() {
+//         window.history.back();
+//     });
+// });
 
-var API_SERVER_DOMAIN = "https://api.byuldajul.shop"; // URL $1
+// var API_SERVER_DOMAIN = "https://api.byuldajul.shop"; // URL $1
 
-document.addEventListener('DOMContentLoaded', function() {
-    // 쿠키에서 accessToken을 가져오는 함수
-    function getCookie(name) {
-        let value = '; ' + document.cookie;
-        let parts = value.split('; ' + name + '=');
-        if (parts.length === 2) return parts.pop().split(";").shift();
-    }
+// document.addEventListener('DOMContentLoaded', function() {
+//     // 쿠키에서 accessToken을 가져오는 함수
+//     function getCookie(name) {
+//         let value = '; ' + document.cookie;
+//         let parts = value.split('; ' + name + '=');
+//         if (parts.length === 2) return parts.pop().split(";").shift();
+//     }
 
-    // accessToken 가져오기
-    const accessToken = getCookie("accessToken");
-    console.log('AccessToken:', accessToken); // accessToken 로그 출력
+//     // accessToken 가져오기
+//     const accessToken = getCookie("accessToken");
+//     console.log('AccessToken:', accessToken); // accessToken 로그 출력
 
-    const saveButton = document.getElementById("idea_save_btn");
-    if (saveButton) {
-        saveButton.addEventListener('click', function() {
-            var idea = {
-                title: document.querySelector('.write_idea_title input').value,
-                mainText: document.getElementById('idea_content1').value
-            };
+//     const saveButton = document.getElementById("idea_save_btn");
+//     if (saveButton) {
+//         saveButton.addEventListener('click', function() {
+//             var idea = {
+//                 title: document.querySelector('.write_idea_title input').value,
+//                 mainText: document.getElementById('idea_content1').value
+//             };
 
-            console.log('아이디어 저장 시도:', idea); // 저장 시도 로그
+//             var formData = new FormData();
+//             formData.append('createIdeaRequestDto', new Blob([JSON.stringify(idea)], { type: 'application/json' }));
+//             selectedFiles.forEach((file, index) => {
+//                 formData.append('images', file);
+//             });
 
-            fetch(API_SERVER_DOMAIN + '/idea', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + accessToken
-                },
-                body: JSON.stringify(idea)
-            })
-            .then(response => {
-                console.log('서버 응답:', response); // 서버 응답 로그
+//             console.log('아이디어 저장 시도:', idea); // 저장 시도 로그
 
-                if (response.ok) {
-                    console.log("accessToken")
-                    console.log('아이디어 저장 성공'); // 저장 성공 로그
-                    window.location.replace("idea.html");
-                } else {
-                    throw new Error('네트워크 에러: ' + response.statusText);
+//             fetch(API_SERVER_DOMAIN + '/idea', {
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                     'Authorization': 'Bearer ' + accessToken
+//                 },
+//                 body: JSON.stringify(idea)
+//             })
+//             .then(response => {
+//                 console.log('서버 응답:', response); // 서버 응답 로그
+
+//                 if (response.ok) {
+//                     console.log("accessToken")
+//                     console.log('아이디어 저장 성공'); // 저장 성공 로그
+//                     window.location.replace("idea.html");
+//                 } else {
+//                     throw new Error('네트워크 에러: ' + response.statusText);
+//                 }
+//             })
+//             .catch(error => {
+//                 console.error('에러: 아이디어 저장 실패', error); // 에러 로그
+//                 alert('아이디어가 날아갔습니다.');
+//             });
+//         });
+//     }
+// });
+        var API_SERVER_DOMAIN = "https://api.byuldajul.shop";
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // 날짜 설정
+            var today = new Date();
+            var year = today.getFullYear();
+            var month = today.getMonth() + 1;
+            var day = today.getDate();
+            var dateString = year + '년 ' + month + '월 ' + day + '일';
+            var h1Element = document.getElementById('write_idea_date');
+            h1Element.textContent = dateString;
+
+            var fileInput = document.getElementById('fileInput');
+            var container = document.querySelector('.image_preview_container');
+            var uploadBox = document.querySelector('.upload-box');
+            var maxImages = 4;
+            var selectedFiles = [];
+
+            fileInput.addEventListener('change', function() {
+                var files = Array.from(this.files);
+                if (files.length + selectedFiles.length > maxImages) {
+                    alert('최대 4개까지만 업로드할 수 있습니다.');
+                    return;
                 }
-            })
-            .catch(error => {
-                console.error('에러: 아이디어 저장 실패', error); // 에러 로그
-                alert('아이디어가 날아갔습니다.');
+
+                files.forEach(file => {
+                    selectedFiles.push(file);
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        addImagePreview(e.target.result);
+                        checkImageCount();
+                    };
+                    reader.readAsDataURL(file);
+                });
             });
+
+            function addImagePreview(src) {
+                var newPreviewContainer = document.createElement('div');
+                newPreviewContainer.className = 'image-preview-container';
+
+                var newImage = document.createElement('img');
+                newImage.src = src;
+                newImage.alt = '이미지 미리보기';
+                newImage.className = 'image-preview';
+
+                var deleteButton = document.createElement('button');
+                deleteButton.className = 'delete-button';
+                deleteButton.innerHTML = '&times;';
+                deleteButton.onclick = function() {
+                    var index = Array.from(container.children).indexOf(newPreviewContainer);
+                    selectedFiles.splice(index, 1);
+                    newPreviewContainer.remove();
+                    checkImageCount();
+                };
+
+                newPreviewContainer.appendChild(newImage);
+                newPreviewContainer.appendChild(deleteButton);
+                container.insertBefore(newPreviewContainer, uploadBox);
+
+                // 업로드 박스를 이동
+                container.appendChild(uploadBox);
+
+                uploadBox.style.display = 'flex';
+                checkImageCount();
+            }
+
+            function checkImageCount() {
+                var previews = document.querySelectorAll('.image-preview-container');
+                if (previews.length >= maxImages) {
+                    uploadBox.style.display = 'none';
+                } else {
+                    uploadBox.style.display = 'flex';
+                }
+            }
+
+            // 입력 필드 이벤트 리스너
+            var titleInput = document.querySelector('.write_idea_title input');
+            var ideaContentInput = document.getElementById('idea_content1');
+            var saveButton = document.getElementById('idea_save_btn');
+
+            function checkInputs() {
+                var titleValue = titleInput.value.trim();
+                var ideaContentValue = ideaContentInput.value.trim();
+
+                if (titleValue !== '' && ideaContentValue !== '') {
+                    saveButton.disabled = false;
+                } else {
+                    saveButton.disabled = true;
+                }
+            }
+
+            titleInput.addEventListener('input', checkInputs);
+            ideaContentInput.addEventListener('input', checkInputs);
+            checkInputs();
+
+            // 가이드라인 토글 및 취소 버튼
+            document.getElementById('guideline').addEventListener('click', function() {
+                var overlay = this.nextElementSibling;
+                overlay.style.opacity = (overlay.style.opacity === '1') ? '0' : '1';
+            });
+
+            document.getElementById('idea_cancel_btn').addEventListener('click', function() {
+                window.history.back();
+            });
+
+            // 쿠키에서 accessToken 가져오기
+            function getCookie(name) {
+                let value = '; ' + document.cookie;
+                let parts = value.split('; ' + name + '=');
+                if (parts.length === 2) return parts.pop().split(";").shift();
+            }
+
+            const accessToken = getCookie("accessToken");
+            console.log('AccessToken:', accessToken);
+
+            // 아이디어 저장 버튼 이벤트 리스너
+            if (saveButton) {
+                saveButton.addEventListener('click', function() {
+                    var idea = {
+                        title: titleInput.value,
+                        mainText: ideaContentInput.value
+                    };
+
+                    var formData = new FormData();
+                    formData.append('createIdeaRequestDto', new Blob([JSON.stringify(idea)], { type: 'application/json' }));
+
+                    selectedFiles.forEach((file) => {
+                        formData.append('images', file);
+                    });
+
+                    fetch(API_SERVER_DOMAIN + '/idea', {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': 'Bearer ' + accessToken
+                        },
+                        body: formData
+                    })
+                    .then(response => {
+                        console.log('서버 응답:', response);
+
+                        if (response.ok) {
+                            console.log('아이디어 저장 성공');
+                            window.location.replace("idea.html");
+                        } else {
+                            throw new Error('네트워크 에러: ' + response.statusText);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('에러: 아이디어 저장 실패', error);
+                        alert('아이디어가 날아갔습니다.');
+                    });
+                });
+            }
         });
-    }
-});
