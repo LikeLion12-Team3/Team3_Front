@@ -49,6 +49,50 @@ function commits(accessToken, year, month) {
     });
 }
 
+//그날의 별다줄
+function todaysummary(accessToken, year, month, date){
+    const url = `${API_SERVER_DOMAIN}/summary?year=${year}&month=${month}&day=${date}`;
+
+    return fetch(url, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + accessToken,
+        },
+    })
+    .then((response) => {
+        if(!response.ok) {
+            throw new Error("Failed to fetch commits");
+        }
+        return response.json();
+    })
+    .then((data) => {
+        console.log('보드 정보:', data);
+        // '오늘의 별다줄' 리스트를 가져옴
+
+        
+        const todayList = document.querySelector('.todayContainer ul');
+
+        // data.summary 문자열을 줄 단위로 분할하여 배열로 변환
+        const summaries = data.summary.split('\n');
+        console.log("summaries", summaries);
+
+        // 각 요약을 <li> 요소로 추가
+        summaries.forEach((summary, index) => {
+            if (summary.trim() !== "") { // 빈 줄 무시
+                const listItem = document.createElement('li');
+                listItem.textContent = `${summary}`;
+                todayList.appendChild(listItem);
+            }
+        });
+        
+    })
+    .catch(error => {
+        console.error('Fetch error:', error);
+    });
+}
+
+
 
 document.addEventListener('DOMContentLoaded', function() {
     //토큰 가져오기
@@ -314,6 +358,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let todayday = new Date().getDate() < 10 ? '0' + new Date().getDate() : new Date().getDate().toString();
     const todaydate = `${currentYear}-${todayMonth}-${todayday}`;
     dateDiaryLoad(accessToken, todaydate);
+
+    //오늘의 일기 요약
+    todaysummary(accessToken, `${currentYear}`, `${currentMonth+1}`, `${new Date().getDate()}`);
 
 });
 

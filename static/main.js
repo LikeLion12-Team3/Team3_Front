@@ -55,7 +55,7 @@ function commits(accessToken, year, month) {
 }
 
 function todaysummary(accessToken, year, month, date){
-    const url = `${API_SERVER_DOMAIN}/summary?year=${year}&month=${month}&day=${day}`;
+    const url = `${API_SERVER_DOMAIN}/summary?year=${year}&month=${month}&day=${date}`;
 
     return fetch(url, {
         method: "GET",
@@ -73,19 +73,23 @@ function todaysummary(accessToken, year, month, date){
     .then((data) => {
         console.log('보드 정보:', data);
         // '오늘의 별다줄' 리스트를 가져옴
+
+        
         const todayList = document.querySelector('.todayContainer ul');
 
         // data.summary 문자열을 줄 단위로 분할하여 배열로 변환
         const summaries = data.summary.split('\n');
+        console.log("summaries", summaries);
 
         // 각 요약을 <li> 요소로 추가
         summaries.forEach((summary, index) => {
             if (summary.trim() !== "") { // 빈 줄 무시
                 const listItem = document.createElement('li');
-                listItem.textContent = `${index + 1}. ${summary}`;
+                listItem.textContent = `${summary}`;
                 todayList.appendChild(listItem);
             }
         });
+        
     })
     .catch(error => {
         console.error('Fetch error:', error);
@@ -192,6 +196,8 @@ document.addEventListener('DOMContentLoaded', function() {
         'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
         'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
     ];
+
+
     
 
     function generateCalendar(month, year, index, count) {
@@ -341,9 +347,10 @@ document.addEventListener('DOMContentLoaded', function() {
             let zeroArray = Array.from({ length: 31 }, () => 0);
             generateCalendar(currentMonth, currentYear, dayIndex, zeroArray);
     });
+    console.log("오늘 날짜", currentYear, currentMonth+1, new Date().getDate());
 
     //오늘의 일기 요약
-    todaysummary(accessToken, year, month, day);
+    todaysummary(accessToken, `${currentYear}`, `${currentMonth+1}`, `${new Date().getDate()}`);
 
 });
 
