@@ -74,7 +74,9 @@ function todaysummary(accessToken, year, month, date){
         const todayList = document.querySelector('.todayContainer ul');
 
         // data.summary 문자열을 줄 단위로 분할하여 배열로 변환
-        const summaries = data.summary.split('\n');
+
+        const summaries = data.summary ? data.summary.split('\n') : ["데이터가 없습니다"];
+
         console.log("summaries", summaries);
 
         // 각 요약을 <li> 요소로 추가
@@ -85,6 +87,7 @@ function todaysummary(accessToken, year, month, date){
                 todayList.appendChild(listItem);
             }
         });
+
         
     })
     .catch(error => {
@@ -227,6 +230,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         const choosedDate = `${year}-${monthStr}-${dateStr}`;
 
                         dateDiaryLoad(accessToken, choosedDate);
+
+                        //오늘의 일기 요약
+                        // 모든 .detailRecord 요소 선택
+                        const summaries = document.querySelectorAll(".todayContainer li");
+                        // 각 요소에 remove 적용
+                        summaries.forEach(summary => summary.remove());
+                        todaysummary(accessToken, `${year}`, `${month+1}`, `${currentDate}`);
+
                     });
                     date++;
                 }
