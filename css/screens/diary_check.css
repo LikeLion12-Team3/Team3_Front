@@ -212,18 +212,28 @@
 }
 
 #recordContent {
-    font-size: 16px;
+	font-size: 16px;
     font-weight: 300;
     margin-top: 10px;
     line-height: 22px;
-
     width: 100%;
-    max-height: 200px;
+    max-height: 320px;
     overflow-y: scroll;
     word-break: normal;
+    background-color: #242323;
     overflow-wrap: normal;
-
+    padding: 24px 24px 12px 24px;
+    border-radius: 15px;
+    margin: 16px 0px;
     -ms-overflow-style: none;
+    }
+    
+#recordContent h1 {
+    margin-bottom: 8px;
+}
+
+#recordContent p {
+    line-height: 1.6;
 }
 
 #recordContent hr {
