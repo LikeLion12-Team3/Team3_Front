@@ -2,7 +2,7 @@
   <img width="100%" align="center" src="https://github.com/user-attachments/assets/45944962-b757-447b-950b-2f9d86cc3abe">
 </p>
 
-# 별다줄
+# 별다줄(개발자/디자이너를 위한 프로젝트 기록 및 정리 서비스)
 상명대학교 멋쟁이사자처럼 12기 교내 해커톤 우승작
 
 [🎥 시연 영상 바로가기](https://youtu.be/PuubnC5O4l0?si=8UqwqPexkLz1a23q)
