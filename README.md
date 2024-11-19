@@ -94,7 +94,7 @@
 
 | 개발 PM (백엔드) | 개발 PM (프론트엔드) | 기획 PM (기획,백엔드) |
 | --- | --- | --- |
-| <a href="https://github.com/DDonghyeo"><img src="https://avatars.githubusercontent.com/u/98632435?v=4" width="100px;" alt=""/>         <br /><sub><b>DDonghyeo</a> | <a href="https://github.com/yeopyeop-82"><img src="https://avatars.githubusercontent.com/u/61226778?v=4" width="100px;" alt=""/>         <br /><sub><b>yeopyeop-82</a> | <a href="https://github.com/2oooo914"><img src="https://avatars.githubusercontent.com/2oooo914?s=100" width="100px;" alt=""/>         <br /><sub><b>2oooo914</a> |
+| <a href="https://github.com/DDonghyeo"><img src="https://avatars.githubusercontent.com/u/98632435?v=4" width="100px;" alt=""/>         <br /><sub><b>DDonghyeo</a> | <a href="https://github.com/yeopyeop-82"><img src="https://avatars.githubusercontent.com/u/61226778?v=4" width="100px;" alt=""/>         <br /><sub><b>yeopyeop-82</a> | <a href="https://github.com/ohcuy"><img src="https://avatars.githubusercontent.com/2oooo914?s=100" width="100px;" alt=""/>         <br /><sub><b>2oooo914</a> |
 | 김동현 | 김승엽 | 조유진 |
 
 | 기획/디자인 | 기획/디자인 | 프론트엔드 | 프론트엔드 | 백엔드 | 백엔드 |
